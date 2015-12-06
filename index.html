@@ -148,7 +148,17 @@
 </header>
     <div class="article-content">
         
-        
+        <p>最近因项目需要，要在App中加入微信支付功能。之前已经支持了银联和支付宝功能。当时接入银联和支付宝的时候，也就是看看文档，跟着文档做就基本能正常使用了，以为微信支付也理应如此。但没想到啊，接入微信支付过程中可没少折腾人。从一开始的申请支付功能到最终的调起微信支付，前前后后，断断续续花了近一个周的时间，这其中有自己的问题也有微信的坑。</p>
+<p>####自己的问题</p>
+<p>#####问题一: 对微信支付中一些概念不熟悉<br>起初是运营给了一个支付商户平台的账号，原以为这个账号就是我需要的账号。就拿这个账号和App的appid一起进行调试试图调起微信，但是一直报appid和mech_id不匹配的错，Google了好久找到了原因。然后去追问运营这个商户账号是怎么申请的，他告诉我是微信公众账号支付的商户平台。然后我去查了下APP后台，发现App支付功能那栏还没开通支付功能。这也就解释了为什么会报appid和mech_id不匹配的错误了。原来在微信中，每一个App都要独立申请支付功能，不可以通用，一个App对应一个商户平台，貌似是这样的。所以，如果报appid和mech_id的错，应该就是要支持支付功能的App的appid与商户平台的商户id不对应造成的。</p>
+<p>####微信的坑</p>
+<p>#####坑一: 支付结果回调<br>微信的支付结果回调貌似是通过反射来实现的。关于怎么回调结果<a href="https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=8_5" target="_blank" rel="external">微信官方文档</a>给的说法是<strong>在net.sourceforge.simcpux.wxapi包路径中实现WXPayEntryActivity类(包名或类名不一致会造成无法回调)</strong>。这里其实正确地写法是<strong>appPackageName.wxapi. WXPayEntryActivity（如:com.example.app.wxapi. WXPayEntryActivity）</strong>，而且类名必须是这个名字。同时我看了下微信分享的写法，也是把相关类放在appPackageName.wxapi的包下，要不不能回调。</p>
+<p>#####坑二: 关于签名<br>整个支付流程涉及到了至少三次签名。<br>第一次是在请求prepay_id的时候需要将请求数据进行一次签名<br>第二次是在调起微信支付的时候需要将请求参数进行一次签名<br>第三次是在微信和自己的服务端进行支付结果回调的时候还需要进行一次签名<br><strong>NOTE：</strong>签名中KEY需要按照字典顺序进行排序，而且会区分大小写。KEY使用小写是对的，必须不能大小写混合  </p>
+<p>#####坑三:支付结果页面展示<br>其实这个应该不算是坑。微信的回调是在WXPayEntryActivity中完成的。如果项目中有自己的回调结果页面。那么微信的这个回调页面就显得比较多余了。我的处理方式是在WXPayEntryActivity里收到微信回调时打开自己的回调页面并关闭掉WXPayEntryActivity，同时将WXPayEntryActivity的主体设置为透明主体并且不给他布局<br>&gt;<br>总体上来说微信的支付过程还是相对比较麻烦的,每次沟通都需要进行签名验证，但另一方面给人的感觉就是比支付宝要安全。  </p>
+<blockquote>
+<p>吐槽下微信的开发文档，明显的感觉就是爱用不用。这和百度地图给人的感觉一样一样的。</p>
+</blockquote>
+
         
         
         <p class="article-more-link">
