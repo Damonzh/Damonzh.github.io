@@ -90,7 +90,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Android-EventBus/" style="font-size: 10px;">Android EventBus</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a>
 					</div>
 				</section>
 				
@@ -175,8 +175,7 @@
 </ul>
 <p>通过以上三步，就完成一次完整的EventBus使用流程。</p>
 <p>其实类似这种发布/订阅的机制在生活中用的也挺多的。比如我晚上定个8点的闹钟，就相当于订阅了一个事件，这个事件就是’8点钟的闹钟’。当第二天8点闹钟响的时候，就相当于发送了事件。我就会收到这个事件，然后执行相应的动作，比如起床。</p>
-<p>那么，既然是订阅/发布。肯定就会有订阅，有发布了。这篇文章先根据源码来研究下订阅事件的流程和原理。</p>
-<p>一般我们都会像这样<code>EventBus.getDefault().register(this)</code>使用EventBus。这里首先会创建一个默认的EventBus对象，然后调用EventBus的<code>register(Object subscriber)</code>方法将当前类作为订阅者进行事件的订阅。</p>
+<p>那么，既然是订阅/发布。肯定就会有订阅，有发布了。这篇文章先根据源码来研究下订阅事件的流程和原理。<br>&lt;– more –&gt;<br>一般我们都会像这样<code>EventBus.getDefault().register(this)</code>使用EventBus。这里首先会创建一个默认的EventBus对象，然后调用EventBus的<code>register(Object subscriber)</code>方法将当前类作为订阅者进行事件的订阅。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span><br><span class="line">Convenience singleton for apps using a process-wide EventBus instance. </span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EventBus <span class="title">getDefault</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	  <span class="keyword">if</span> (defaultInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">	        <span class="keyword">synchronized</span> (EventBus.class) &#123;</span><br><span class="line">	            <span class="keyword">if</span> (defaultInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">	                defaultInstance = <span class="keyword">new</span> EventBus();</span><br><span class="line">	            &#125;</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">return</span> defaultInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看到，源码是通过单例模式来维护一个EventBus的实例的。从注释中看以看到，这个实例的作用于为整个进程。</p>
 <p>这里的关键点就是<code>register(Object subscriber)</code>方法了，上源码：</p>
@@ -198,7 +197,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-EventBus/">Android EventBus</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EventBus/">EventBus</a></li></ul>
 	</div>
 
       
