@@ -14,7 +14,7 @@
 校对者: desmond1121">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DamonZhang">
-<meta property="og:url" content="http://yoursite.com/2015/12/20/Gradle-Tips-3/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/12/20/Gradle-tips-3/index.html">
 <meta property="og:site_name" content="DamonZhang">
 <meta property="og:description" content="Gradle小知识#3：任务的顺序
 
@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://trickyandroid.com/content/images/2015/07/3.png">
 <meta property="og:image" content="http://trickyandroid.com/content/images/2015/07/6.png">
 <meta property="og:image" content="http://trickyandroid.com/content/images/2015/07/7.png">
-<meta property="og:updated_time" content="2015-12-20T07:41:43.000Z">
+<meta property="og:updated_time" content="2015-12-20T08:08:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DamonZhang">
 <meta name="twitter:description" content="Gradle小知识#3：任务的顺序
@@ -162,11 +162,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-Gradle-Tips-3" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Gradle-tips-3" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/20/Gradle-Tips-3/" class="article-date">
-  	<time datetime="2015-12-20T08:04:01.000Z" itemprop="datePublished">2015-12-20</time>
+      <a href="/2015/12/20/Gradle-tips-3/" class="article-date">
+  	<time datetime="2015-12-20T08:08:13.000Z" itemprop="datePublished">2015-12-20</time>
 </a>
     </div>
   
@@ -196,8 +196,7 @@
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> A &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from A'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> B &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from B'</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>然后你要做的就是告诉Gradle任务<code>B</code>依赖于任务<code>A</code></p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B.dependsOn A</span><br></pre></td></tr></table></figure>
-<p>这样不管什么时候我执行任务<code>B</code>，Gradle也会执行任务<code>A</code></p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">paveldudka$ gradle B</span><br><span class="line">:A</span><br><span class="line">Hello <span class="keyword">from</span> A</span><br><span class="line">:B</span><br><span class="line">Hello <span class="keyword">from</span> B</span><br><span class="line">~~~  </span><br><span class="line"></span><br><span class="line">另外，你也可以在任务的配置部分声明类似的依赖关系：</span><br><span class="line"></span><br><span class="line">~~~gradle</span><br><span class="line"><span class="keyword">task</span> A &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from A'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> B &#123;</span><br><span class="line">    dependsOn A</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">'Hello from B'</span>  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样不管什么时候我执行任务<code>B</code>，Gradle也会执行任务<code>A</code><br><a id="more"></a><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">paveldudka$ gradle B</span><br><span class="line">:A</span><br><span class="line">Hello <span class="keyword">from</span> A</span><br><span class="line">:B</span><br><span class="line">Hello <span class="keyword">from</span> B</span><br><span class="line">~~~  </span><br><span class="line"></span><br><span class="line">另外，你也可以在任务的配置部分声明类似的依赖关系：</span><br><span class="line"></span><br><span class="line">~~~gradle</span><br><span class="line"><span class="keyword">task</span> A &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from A'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> B &#123;</span><br><span class="line">    dependsOn A</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">'Hello from B'</span>  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>效果是一样的。  </p>
 <p>但是如果想把我们的任务插入到已经存在的任务流中该怎么做？  </p>
 <p><img src="http://trickyandroid.com/content/images/2015/07/2.png" alt="">   </p>
@@ -254,17 +253,8 @@ Merging test reports
     
 <nav id="article-nav">
   
-    <a href="/2015/12/20/Gradle-TIps-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/12/20/Gradle-tips-1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/12/20/Gradle-tips-2/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <strong class="article-nav-caption">></strong>
     </a>
@@ -294,7 +284,7 @@ Merging test reports
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Gradle-Tips-3" data-title="" data-url="http://yoursite.com/2015/12/20/Gradle-Tips-3/"></div>
+	<div class="ds-thread" data-thread-key="Gradle-tips-3" data-title="" data-url="http://yoursite.com/2015/12/20/Gradle-tips-3/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
