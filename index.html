@@ -90,7 +90,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/Gradle/" style="font-size: 15px;">Gradle</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a> <a href="/tags/译文/" style="font-size: 15px;">译文</a>
 					</div>
 				</section>
 				
@@ -140,11 +140,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Gradle-tips-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Gradle-tips-3" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/20/Gradle-tips-1/" class="article-date">
-  	<time datetime="2015-12-20T08:10:14.000Z" itemprop="datePublished">2015-12-20</time>
+      <a href="/2015/12/20/Gradle-tips-3/" class="article-date">
+  	<time datetime="2015-12-20T08:15:44.000Z" itemprop="datePublished">2015-12-20</time>
 </a>
     </div>
   
@@ -153,9 +153,97 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/20/Gradle-tips-3/">Gradle小知识#3：任务的顺序</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Gradle_u5C0F_u77E5_u8BC6_231_uFF1Atasks"><a href="#Gradle_u5C0F_u77E5_u8BC6_231_uFF1Atasks" class="headerlink" title="Gradle小知识#1：tasks"></a>Gradle小知识#1：tasks</h2><blockquote>
+        <blockquote>
+<ul>
+<li>原文链接 : <a href="http://trickyandroid.com/gradle-tip-3-tasks-ordering/">Gradle tip #3: Tasks ordering</a></li>
+<li>原文作者 : <a href="http://trickyandroid.com/">Tricky Android</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn">开发技术前线 www.devtf.cn。本译文已授权开发者头条（链接：http://toutiao.io/download）享有独家转载权，未经允许，不得转载!</a></li>
+<li>译者 : <a href="https://github.com/Damonzh">Damonzh</a>  </li>
+<li>校对者: <a href="https://github.com/desmond1121">desmond1121</a>  </li>
+<li>状态 :  完成 </li>
+</ul>
+</blockquote>
+<p>我发现在使用Gradle的过程中遇到的很多问题都跟任务的顺序有关系，不管是已经存在的任务还是我自定义的任务。很显然，如果任务能在正确的时间执行的话，构建任务就能更好的工作了。</p>
+<p>所以让我们深入了解下怎么更改任务的执行上顺序这个问题。</p>
+<h3 id="dependsOn"><a href="#dependsOn" class="headerlink" title="dependsOn"></a>dependsOn</h3><p>我觉得让某个任务在另一个任务之后执行的最简单的方法就是使用<a href="https://docs.gradle.org/current/dsl/org.gradle.api.Task.html#org.gradle.api.Task:dependsOn(java.lang.Object[]"><code>dependsOn</code></a>)方法。  </p>
+<p>假设有一个任务<code>A</code>，现在我们要添加一个任务<code>B</code>并且任务<code>B</code>只有在任务<code>A</code>执行后它才会执行：  </p>
+<p><img src="http://trickyandroid.com/content/images/2015/07/1-3.png" alt="">  </p>
+<p>先来定义两个任务，任务<code>A</code>和<code>B</code>：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> A &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from A'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> B &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from B'</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>然后你要做的就是告诉Gradle任务<code>B</code>依赖于任务<code>A</code></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B.dependsOn A</span><br></pre></td></tr></table></figure>
+<p>这样不管什么时候我执行任务<code>B</code>，Gradle也会执行任务<code>A</code><br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle/">Gradle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/20/Gradle-tips-3/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Gradle-tips-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/20/Gradle-tips-1/" class="article-date">
+  	<time datetime="2015-12-20T08:14:13.000Z" itemprop="datePublished">2015-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/20/Gradle-tips-1/">Gradle小知识#1：tasks</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
 <ul>
 <li>原文链接 : <a href="http://trickyandroid.com/gradle-tip-1-tasks/" target="_blank" rel="external">Gradle tip #1: tasks</a></li>
 <li>原文作者 : <a href="http://trickyandroid.com/" target="_blank" rel="external">Tricky Android</a></li>
@@ -169,7 +257,7 @@
 <p>今天我们来聊聊Gradle的<strong>任务</strong>，尤其是任务的配置和执行部分。因为这块知识对很多读者来说还不是很清楚，所以通过一个真实的例子来说明下就再好不过了。大体上(抱歉有点超前)我们是想要弄清楚下面这三个例子到底有啥区别：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> myTask &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br><span class="line">~~~  </span><br><span class="line">我的目的是创建一个任务，当这个任务被执行的时候它能打印<span class="string">"Hello， World!"</span>。一开始，我是这样实现的：</span><br><span class="line"></span><br><span class="line">~~~gradle</span><br><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>现在我们执行下这个任务！</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">user$ gradle myTask</span><br><span class="line">Hello, World!</span><br><span class="line">:myTask UP-TO-DATE</span><br><span class="line">~~~  </span><br><span class="line">这好像没啥问题。正确的打印出了“Hello, World!”&lt;!-- more --&gt;</span><br><span class="line">**但是，**这并没有按照我们预想的那样工作。下面让我告诉你为什么。我们试着调用下`gradle tasks`看看还有其他什么能执行的任务没：</span><br><span class="line"></span><br><span class="line">~~~gradle</span><br><span class="line">user$ gradle tasks</span><br><span class="line">Hello, World!</span><br><span class="line">:tasks</span><br><span class="line"></span><br><span class="line">------------------------------------------------------------</span><br><span class="line">All tasks runnable <span class="keyword">from</span> root <span class="keyword">project</span></span><br><span class="line">------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Build Setup tasks</span><br><span class="line">-----------------</span><br><span class="line">init - Initializes a <span class="keyword">new</span> Gradle build. [incubating]</span><br><span class="line">..........</span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">user$ gradle myTask</span><br><span class="line">Hello, World!</span><br><span class="line">:myTask UP-TO-DATE</span><br><span class="line">~~~  </span><br><span class="line">这好像没啥问题。正确的打印出了“Hello, World!”</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">**但是，**这并没有按照我们预想的那样工作。下面让我告诉你为什么。我们试着调用下`gradle tasks`看看还有其他什么能执行的任务没：</span><br><span class="line"></span><br><span class="line">~~~gradle</span><br><span class="line">user$ gradle tasks</span><br><span class="line">Hello, World!</span><br><span class="line">:tasks</span><br><span class="line"></span><br><span class="line">------------------------------------------------------------</span><br><span class="line">All tasks runnable <span class="keyword">from</span> root <span class="keyword">project</span></span><br><span class="line">------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Build Setup tasks</span><br><span class="line">-----------------</span><br><span class="line">init - Initializes a <span class="keyword">new</span> Gradle build. [incubating]</span><br><span class="line">..........</span><br></pre></td></tr></table></figure>
 <p>等等！为什么打印了”Hello, World!”？我只是调用了<code>tasks</code>，我并没有调用我定义的任务呀！</p>
 <p>原因就是在Gradle<code>任务</code>的生命周期中，有两个重要的阶段：</p>
 <ul>
@@ -197,70 +285,12 @@
     <div class="article-info article-info-index">
       
       
-      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle/">Gradle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
+	</div>
 
       
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
 
-
-
-
-
-
-
-  
-    <article id="post-Gradle-tips-3" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/20/Gradle-tips-3/" class="article-date">
-  	<time datetime="2015-12-20T08:08:13.000Z" itemprop="datePublished">2015-12-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Gradle_u5C0F_u77E5_u8BC6_233_uFF1A_u4EFB_u52A1_u7684_u987A_u5E8F"><a href="#Gradle_u5C0F_u77E5_u8BC6_233_uFF1A_u4EFB_u52A1_u7684_u987A_u5E8F" class="headerlink" title="Gradle小知识#3：任务的顺序"></a>Gradle小知识#3：任务的顺序</h2><blockquote>
-<ul>
-<li>原文链接 : <a href="http://trickyandroid.com/gradle-tip-3-tasks-ordering/">Gradle tip #3: Tasks ordering</a></li>
-<li>原文作者 : <a href="http://trickyandroid.com/">Tricky Android</a></li>
-<li>译文出自 : <a href="http://www.devtf.cn">开发技术前线 www.devtf.cn。本译文已授权开发者头条（链接：http://toutiao.io/download）享有独家转载权，未经允许，不得转载!</a></li>
-<li>译者 : <a href="https://github.com/Damonzh">Damonzh</a>  </li>
-<li>校对者: <a href="https://github.com/desmond1121">desmond1121</a>  </li>
-<li>状态 :  完成 </li>
-</ul>
-</blockquote>
-<p>我发现在使用Gradle的过程中遇到的很多问题都跟任务的顺序有关系，不管是已经存在的任务还是我自定义的任务。很显然，如果任务能在正确的时间执行的话，构建任务就能更好的工作了。</p>
-<p>所以让我们深入了解下怎么更改任务的执行上顺序这个问题。</p>
-<h3 id="dependsOn"><a href="#dependsOn" class="headerlink" title="dependsOn"></a>dependsOn</h3><p>我觉得让某个任务在另一个任务之后执行的最简单的方法就是使用<a href="https://docs.gradle.org/current/dsl/org.gradle.api.Task.html#org.gradle.api.Task:dependsOn(java.lang.Object[]"><code>dependsOn</code></a>)方法。  </p>
-<p>假设有一个任务<code>A</code>，现在我们要添加一个任务<code>B</code>并且任务<code>B</code>只有在任务<code>A</code>执行后它才会执行：  </p>
-<p><img src="http://trickyandroid.com/content/images/2015/07/1-3.png" alt="">  </p>
-<p>先来定义两个任务，任务<code>A</code>和<code>B</code>：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> A &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from A'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> B &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from B'</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>然后你要做的就是告诉Gradle任务<code>B</code>依赖于任务<code>A</code></p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B.dependsOn A</span><br></pre></td></tr></table></figure>
-<p>这样不管什么时候我执行任务<code>B</code>，Gradle也会执行任务<code>A</code><br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/20/Gradle-tips-3/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -280,7 +310,7 @@
   
     <div class="article-meta">
       <a href="/2015/12/20/Gradle-tips-2/" class="article-date">
-  	<time datetime="2015-12-20T08:08:02.000Z" itemprop="datePublished">2015-12-20</time>
+  	<time datetime="2015-12-20T08:14:02.000Z" itemprop="datePublished">2015-12-20</time>
 </a>
     </div>
   
@@ -289,9 +319,20 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/20/Gradle-tips-2/">Gradle小知识#2：学学语法</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Gradle_u5C0F_u77E5_u8BC6_232_uFF1A_u5B66_u5B66_u8BED_u6CD5"><a href="#Gradle_u5C0F_u77E5_u8BC6_232_uFF1A_u5B66_u5B66_u8BED_u6CD5" class="headerlink" title="Gradle小知识#2：学学语法"></a>Gradle小知识#2：学学语法</h2><blockquote>
+        <blockquote>
 <ul>
 <li>原文链接 : <a href="http://trickyandroid.com/gradle-tip-2-understanding-syntax/">Gradle tip #2: understanding syntax</a></li>
 <li>原文作者 : <a href="http://trickyandroid.com/">Tricky Android</a></li>
@@ -313,6 +354,10 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle/">Gradle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
+	</div>
+
       
 
       
