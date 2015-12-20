@@ -140,6 +140,80 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Gradle-tips-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/20/Gradle-tips-1/" class="article-date">
+  	<time datetime="2015-12-20T08:10:14.000Z" itemprop="datePublished">2015-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Gradle_u5C0F_u77E5_u8BC6_231_uFF1Atasks"><a href="#Gradle_u5C0F_u77E5_u8BC6_231_uFF1Atasks" class="headerlink" title="Gradle小知识#1：tasks"></a>Gradle小知识#1：tasks</h2><blockquote>
+<ul>
+<li>原文链接 : <a href="http://trickyandroid.com/gradle-tip-1-tasks/" target="_blank" rel="external">Gradle tip #1: tasks</a></li>
+<li>原文作者 : <a href="http://trickyandroid.com/" target="_blank" rel="external">Tricky Android</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="external">开发技术前线 www.devtf.cn。本译文已授权开发者头条（链接：http://toutiao.io/download）享有独家转载权，未经允许，不得转载!</a></li>
+<li>译者 : <a href="https://github.com/Damonzh" target="_blank" rel="external">Damonzh</a>  </li>
+<li>校对者: <a href="https://github.com/desmond1121" target="_blank" rel="external">desmond1121</a>  </li>
+<li>状态 :  完成 </li>
+</ul>
+</blockquote>
+<p>从这篇博文开始我打算开启关于Gradle相关知识的一些列博文。现在想想，如果我刚开始接触Gradle的时候知道这些知识的话那该多好啊。 </p>
+<p>今天我们来聊聊Gradle的<strong>任务</strong>，尤其是任务的配置和执行部分。因为这块知识对很多读者来说还不是很清楚，所以通过一个真实的例子来说明下就再好不过了。大体上(抱歉有点超前)我们是想要弄清楚下面这三个例子到底有啥区别：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> myTask &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br><span class="line">~~~  </span><br><span class="line">我的目的是创建一个任务，当这个任务被执行的时候它能打印<span class="string">"Hello， World!"</span>。一开始，我是这样实现的：</span><br><span class="line"></span><br><span class="line">~~~gradle</span><br><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们执行下这个任务！</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">user$ gradle myTask</span><br><span class="line">Hello, World!</span><br><span class="line">:myTask UP-TO-DATE</span><br><span class="line">~~~  </span><br><span class="line">这好像没啥问题。正确的打印出了“Hello, World!”&lt;!-- more --&gt;</span><br><span class="line">**但是，**这并没有按照我们预想的那样工作。下面让我告诉你为什么。我们试着调用下`gradle tasks`看看还有其他什么能执行的任务没：</span><br><span class="line"></span><br><span class="line">~~~gradle</span><br><span class="line">user$ gradle tasks</span><br><span class="line">Hello, World!</span><br><span class="line">:tasks</span><br><span class="line"></span><br><span class="line">------------------------------------------------------------</span><br><span class="line">All tasks runnable <span class="keyword">from</span> root <span class="keyword">project</span></span><br><span class="line">------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Build Setup tasks</span><br><span class="line">-----------------</span><br><span class="line">init - Initializes a <span class="keyword">new</span> Gradle build. [incubating]</span><br><span class="line">..........</span><br></pre></td></tr></table></figure>
+<p>等等！为什么打印了”Hello, World!”？我只是调用了<code>tasks</code>，我并没有调用我定义的任务呀！</p>
+<p>原因就是在Gradle<code>任务</code>的生命周期中，有两个重要的阶段：</p>
+<ul>
+<li>配置阶段</li>
+<li>执行阶段</li>
+</ul>
+<p>我对这些专业术语可能不太熟悉，但类比一下可以帮助我更好的理解Gradle的任务。</p>
+<p>事情是这样的，Gradle在真正进行构建<strong>之前</strong>，<strong>必须把构建脚本中定义的所有任务配置一下</strong>。不管这个任务会不会被执行，它都要先配置一下。</p>
+<p>既然了解了这一点，但我又该怎么知道任务中哪部分是在配置阶段执行，哪部分又是在执行阶段执行呢？答案就是：任务中的顶层部分是<strong>配置阶段</strong>会执行的代码。比如：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">def</span> name = <span class="string">"Pavel"</span> <span class="comment">//&lt;-- this is evaluated during configuration</span></span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span><span class="comment">////&lt;-- this is also evaluated during configuration</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这就是为什么我只是调用了<code>gradle tasks</code>，但却打印了”Hello, World!”。因为这部分代码在配置阶段执行了。但这并不是我想要的。我想要的是这段代码只有在我调用我的任务的时候才去执行。</p>
+<p>那么，我该怎么告诉Gradle当我执行我的任务的时候才去做一些事情呢？</p>
+<p>这时我就需要给任务指定一个动作。最简单的做法就是通过<a href="https://www.gradle.org/docs/current/dsl/org.gradle.api.Task.html#org.gradle.api.Task:doLast(groovy.lang.Closure" target="_blank" rel="external">Task#doLast()</a>)方法：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">def</span> text = <span class="string">'Hello, World!'</span> <span class="comment">//configure my task</span></span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> text <span class="comment">//this is executed when my task is called</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，”Hello, World!”只有在我显式的调用<code>gradle myTask</code>的时候才会打印出来。</p>
+<p>Cool！现在我知道怎么配置任务并且让任务只有在我明确调用的时候才会做真正的工作。那么第三个例子中的<code>&lt;&lt;</code>又是啥？：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask2 &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这只是<code>doLast</code>的简写版本而已。这跟下面的写法完全一样：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">'Hello, World!'</span> <span class="comment">//this is executed when my task is called</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是，既然所有的代码都在执行部分了，那我就不能像<code>doLast</code>写法那样配置我的任务了(放心吧，还是可以的，只是稍微有点不同而已)。这种简写方式对那些不需要进行配置的小任务来说很方便。但是，如果你的任务不仅仅像打印”Hello, World!”这么简单的话，那还是建议考虑使用<code>doLast</code>这种写法。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-Gradle-tips-3" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -245,80 +319,6 @@
         <p class="article-more-link">
           <a  href="/2015/12/20/Gradle-tips-2/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Gradle-tips-1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/20/Gradle-tips-1/" class="article-date">
-  	<time datetime="2015-12-20T08:07:37.000Z" itemprop="datePublished">2015-12-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Gradle_u5C0F_u77E5_u8BC6_231_uFF1Atasks"><a href="#Gradle_u5C0F_u77E5_u8BC6_231_uFF1Atasks" class="headerlink" title="Gradle小知识#1：tasks"></a>Gradle小知识#1：tasks</h2><blockquote>
-<ul>
-<li>原文链接 : <a href="http://trickyandroid.com/gradle-tip-1-tasks/" target="_blank" rel="external">Gradle tip #1: tasks</a></li>
-<li>原文作者 : <a href="http://trickyandroid.com/" target="_blank" rel="external">Tricky Android</a></li>
-<li>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="external">开发技术前线 www.devtf.cn。本译文已授权开发者头条（链接：http://toutiao.io/download）享有独家转载权，未经允许，不得转载!</a></li>
-<li>译者 : <a href="https://github.com/Damonzh" target="_blank" rel="external">Damonzh</a>  </li>
-<li>校对者: <a href="https://github.com/desmond1121" target="_blank" rel="external">desmond1121</a>  </li>
-<li>状态 :  完成 </li>
-</ul>
-</blockquote>
-<p>从这篇博文开始我打算开启关于Gradle相关知识的一些列博文。现在想想，如果我刚开始接触Gradle的时候知道这些知识的话那该多好啊。 </p>
-<p>今天我们来聊聊Gradle的<strong>任务</strong>，尤其是任务的配置和执行部分。因为这块知识对很多读者来说还不是很清楚，所以通过一个真实的例子来说明下就再好不过了。大体上(抱歉有点超前)我们是想要弄清楚下面这三个例子到底有啥区别：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> myTask &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br><span class="line">~~~  </span><br><span class="line">我的目的是创建一个任务，当这个任务被执行的时候它能打印<span class="string">"Hello， World!"</span>。一开始，我是这样实现的：</span><br><span class="line"></span><br><span class="line">~~~gradle</span><br><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>现在我们执行下这个任务！</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">user$ gradle myTask</span><br><span class="line">Hello, World!</span><br><span class="line">:myTask UP-TO-DATE</span><br><span class="line">~~~  </span><br><span class="line">这好像没啥问题。正确的打印出了“Hello, World!”</span><br><span class="line">**但是，**这并没有按照我们预想的那样工作。下面让我告诉你为什么。我们试着调用下`gradle tasks`看看还有其他什么能执行的任务没：</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">~~~gradle</span><br><span class="line">user$ gradle tasks</span><br><span class="line">Hello, World!</span><br><span class="line">:tasks</span><br><span class="line"></span><br><span class="line">------------------------------------------------------------</span><br><span class="line">All tasks runnable <span class="keyword">from</span> root <span class="keyword">project</span></span><br><span class="line">------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Build Setup tasks</span><br><span class="line">-----------------</span><br><span class="line">init - Initializes a <span class="keyword">new</span> Gradle build. [incubating]</span><br><span class="line">..........</span><br></pre></td></tr></table></figure>
-<p>等等！为什么打印了”Hello, World!”？我只是调用了<code>tasks</code>，我并没有调用我定义的任务呀！</p>
-<p>原因就是在Gradle<code>任务</code>的生命周期中，有两个重要的阶段：</p>
-<ul>
-<li>配置阶段</li>
-<li>执行阶段</li>
-</ul>
-<p>我对这些专业术语可能不太熟悉，但类比一下可以帮助我更好的理解Gradle的任务。</p>
-<p>事情是这样的，Gradle在真正进行构建<strong>之前</strong>，<strong>必须把构建脚本中定义的所有任务配置一下</strong>。不管这个任务会不会被执行，它都要先配置一下。</p>
-<p>既然了解了这一点，但我又该怎么知道任务中哪部分是在配置阶段执行，哪部分又是在执行阶段执行呢？答案就是：任务中的顶层部分是<strong>配置阶段</strong>会执行的代码。比如：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">def</span> name = <span class="string">"Pavel"</span> <span class="comment">//&lt;-- this is evaluated during configuration</span></span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span><span class="comment">////&lt;-- this is also evaluated during configuration</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这就是为什么我只是调用了<code>gradle tasks</code>，但却打印了”Hello, World!”。因为这部分代码在配置阶段执行了。但这并不是我想要的。我想要的是这段代码只有在我调用我的任务的时候才去执行。</p>
-<p>那么，我该怎么告诉Gradle当我执行我的任务的时候才去做一些事情呢？</p>
-<p>这时我就需要给任务指定一个动作。最简单的做法就是通过<a href="https://www.gradle.org/docs/current/dsl/org.gradle.api.Task.html#org.gradle.api.Task:doLast(groovy.lang.Closure" target="_blank" rel="external">Task#doLast()</a>)方法：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">def</span> text = <span class="string">'Hello, World!'</span> <span class="comment">//configure my task</span></span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> text <span class="comment">//this is executed when my task is called</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>现在，”Hello, World!”只有在我显式的调用<code>gradle myTask</code>的时候才会打印出来。</p>
-<p>Cool！现在我知道怎么配置任务并且让任务只有在我明确调用的时候才会做真正的工作。那么第三个例子中的<code>&lt;&lt;</code>又是啥？：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask2 &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这只是<code>doLast</code>的简写版本而已。这跟下面的写法完全一样：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">'Hello, World!'</span> <span class="comment">//this is executed when my task is called</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是，既然所有的代码都在执行部分了，那我就不能像<code>doLast</code>写法那样配置我的任务了(放心吧，还是可以的，只是稍微有点不同而已)。这种简写方式对那些不需要进行配置的小任务来说很方便。但是，如果你的任务不仅仅像打印”Hello, World!”这么简单的话，那还是建议考虑使用<code>doLast</code>这种写法。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
       
       <div class="clearfix"></div>
     </div>
