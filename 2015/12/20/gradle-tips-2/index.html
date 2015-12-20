@@ -27,7 +27,7 @@
 
 
 在">
-<meta property="og:updated_time" content="2015-12-20T10:07:42.000Z">
+<meta property="og:updated_time" content="2015-12-20T10:36:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle小知识#2：学学语法">
 <meta name="twitter:description" content="原文链接 : Gradle tip #2: understanding syntax
@@ -285,7 +285,7 @@
 <li>等等……  </li>
 </ol>
 <p>现在我们就能理解Gradle构建脚本的语法并且会查阅文档了。  </p>
-<p>###练习<br>学了这么多新技能，接下来我们来操练操练，试着重新配置下一些东西。</p>
+<h3 id="u7EC3_u4E60"><a href="#u7EC3_u4E60" class="headerlink" title="练习"></a>练习</h3><p>学了这么多新技能，接下来我们来操练操练，试着重新配置下一些东西。</p>
 <p>在<code>AppExtension</code>中我发现了<code>testOptions</code>脚本块，它的闭包被代理到<code>TestOptions</code>类。查看<code>TestOptions</code>类，我们发现它有两个属性：<code>reportDir</code>和<code>resultsDir</code>。根据文档的解释：<code>reportDir</code>的作用是制定测试报告的存储路径。我们更改下它的值！</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">......</span><br><span class="line">    testOptions &#123;</span><br><span class="line">        reportDir <span class="string">"$rootDir/test_reports"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里使用了<code>Project</code>的<code>rootDir</code>属性，它指向工程的根目录。  </p>
