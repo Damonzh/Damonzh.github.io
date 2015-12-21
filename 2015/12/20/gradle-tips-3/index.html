@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://trickyandroid.com/content/images/2015/07/5.png">
 <meta property="og:image" content="http://trickyandroid.com/content/images/2015/07/6.png">
 <meta property="og:image" content="http://trickyandroid.com/content/images/2015/07/7.png">
-<meta property="og:updated_time" content="2015-12-21T13:43:43.000Z">
+<meta property="og:updated_time" content="2015-12-21T13:47:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle小知识#3：任务的顺序">
 <meta name="twitter:description" content="原文链接 : Gradle tip #3: Tasks ordering
@@ -220,8 +220,8 @@
 <p>我发现在使用Gradle的过程中遇到的很多问题都跟任务的顺序有关系，不管是已经存在的任务还是我自定义的任务。很显然，如果任务能在正确的时间执行的话，构建任务就能更好的工作了。</p>
 <p>所以让我们深入了解下怎么更改任务的执行上顺序这个问题。</p>
 <h3 id="dependsOn"><a href="#dependsOn" class="headerlink" title="dependsOn"></a>dependsOn</h3><p>我觉得让某个任务在另一个任务之后执行的最简单的方法就是使用<a href="https://docs.gradle.org/current/dsl/org.gradle.api.Task.html#org.gradle.api.Task:dependsOn(java.lang.Object[]" target="_blank" rel="external"><code>dependsOn</code></a>)方法。  </p>
-<p>假设有一个任务<code>A</code>，现在我们要添加一个任务<code>B</code>并且任务<code>B</code>只有在任务<code>A</code>执行后它才会执行：  </p>
-<p><img src="http://trickyandroid.com/content/images/2015/07/1-3.png" alt="">  </p>
+<p>假设有一个任务<code>A</code>，现在我们要添加一个任务<code>B</code>并且任务<code>B</code>只有在任务<code>A</code>执行后它才会执行：</p>
+<p><img src="http://trickyandroid.com/content/images/2015/07/1-3.png" alt=""></p>
 <p>先来定义两个任务，任务<code>A</code>和<code>B</code>：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> A &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from A'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> B &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from B'</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>然后你要做的就是告诉Gradle任务<code>B</code>依赖于任务<code>A</code></p>
@@ -230,22 +230,22 @@
 <p>另外，你也可以在任务的配置部分声明类似的依赖关系：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> A &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from A'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> B &#123;</span><br><span class="line">    dependsOn A</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">'Hello from B'</span>  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>效果是一样的。  </p>
-<p>但是如果想把我们的任务插入到已经存在的任务流中该怎么做？  </p>
+<p>但是如果想把我们的任务插入到已经存在的任务流中该怎么做? </p>
 <p><img src="http://trickyandroid.com/content/images/2015/07/2.png" alt="">   </p>
 <p>步骤基本是一样的。  </p>
 <p>原本的任务流程是这样的：  </p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> A &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from A'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> B &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from B'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> C &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from C'</span>&#125;</span><br><span class="line"></span><br><span class="line">B.dependsOn A</span><br><span class="line">C.dependsOn B</span><br></pre></td></tr></table></figure>
 <p>我们的新任务是这样的：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> B1 &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from B1'</span>&#125;</span><br><span class="line">B1.dependsOn B</span><br><span class="line">C.dependsOn B1</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
+<p>输出：  </p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">paveldudka$ gradle C</span><br><span class="line">:A</span><br><span class="line">Hello <span class="keyword">from</span> A</span><br><span class="line">:B</span><br><span class="line">Hello <span class="keyword">from</span> B</span><br><span class="line">:B1</span><br><span class="line">Hello <span class="keyword">from</span> B1</span><br><span class="line">:C</span><br><span class="line">Hello <span class="keyword">from</span> C</span><br></pre></td></tr></table></figure>
 <p>可以看到<strong>dependsOn</strong>方法把新任务添加到一个依赖序列当中去了。因此一个任务依赖多个任务也是完全可以的：  </p>
 <p><img src="http://trickyandroid.com/content/images/2015/07/3.png" alt="">  </p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> B1 &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from B1'</span>&#125;</span><br><span class="line">B1.dependsOn B</span><br><span class="line">B1.dependsOn Q</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
+<p>输出：  </p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">paveldudka$ gradle B1</span><br><span class="line">:A</span><br><span class="line">Hello <span class="keyword">from</span> A</span><br><span class="line">:B</span><br><span class="line">Hello <span class="keyword">from</span> B</span><br><span class="line">:Q</span><br><span class="line">Hello <span class="keyword">from</span> Q</span><br><span class="line">:B1</span><br><span class="line">Hello <span class="keyword">from</span> B1</span><br></pre></td></tr></table></figure>
 <h3 id="mustRunAfter"><a href="#mustRunAfter" class="headerlink" title="mustRunAfter"></a>mustRunAfter</h3><p>想象一下我们的任务依赖其他两个任务。下面我会使用一个更真实点的例子。假如我有一个任务执行单元测试，另一个任务做UI测试，还有一个任务单元测试和UI测试都做：  </p>
-<p><img src="http://trickyandroid.com/content/images/2015/07/4.png" alt="">  </p>
+<p><img src="http://trickyandroid.com/content/images/2015/07/4.png" alt=""></p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> unit &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from unit tests'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> ui &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from UI tests'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> tests &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from all tests!'</span>&#125;</span><br><span class="line"></span><br><span class="line">tests.dependsOn unit</span><br><span class="line">tests.dependsOn ui</span><br></pre></td></tr></table></figure>
 <p>输出： </p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">paveldudka$ gradle tests</span><br><span class="line">:ui</span><br><span class="line">Hello <span class="keyword">from</span> UI tests</span><br><span class="line">:unit</span><br><span class="line">Hello <span class="keyword">from</span> unit tests</span><br><span class="line">:tests</span><br><span class="line">Hello <span class="keyword">from</span> all tests!</span><br></pre></td></tr></table></figure>
