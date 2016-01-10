@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="DamonZhang">
 <meta property="og:description" content="最近翻译了一片关于Context泄露的文章,其中提到了Handler的一些知识点。想想当初自己研究这块的时候也是看着源码一点点抠出来的。只不过那时候没有做个总结，现在正好借着这个机会把这块知识点总结下，也算是做个备注了。  
 我们知道Android应用启动的时候会执行ActivityThread类的main方法，详情请参见罗升阳的这篇文章。main方法中会为主线程创建一个Looper对象，这个Lo">
-<meta property="og:updated_time" content="2016-01-10T05:52:21.000Z">
+<meta property="og:updated_time" content="2016-01-10T05:53:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Handler机制分析">
 <meta name="twitter:description" content="最近翻译了一片关于Context泄露的文章,其中提到了Handler的一些知识点。想想当初自己研究这块的时候也是看着源码一点点抠出来的。只不过那时候没有做个总结，现在正好借着这个机会把这块知识点总结下，也算是做个备注了。  
@@ -180,7 +180,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近翻译了一片关于Context泄露的<a href="https://github.com/bboyfeiyu/android-tech-frontier/blob/master/issue-34/How%20to%20Leak%20a%20Context.md" target="_blank" rel="external">文章</a>,其中提到了Handler的一些知识点。想想当初自己研究这块的时候也是看着源码一点点抠出来的。只不过那时候没有做个总结，现在正好借着这个机会把这块知识点总结下，也算是做个备注了。  </p>
-<p>我们知道Android应用启动的时候会执行ActivityThread类的main方法，详情请参见<a href="http://blog.csdn.net/luoshengyang/article/details/6747696" target="_blank" rel="external">罗升阳的这篇文章</a>。main方法中会为主线程创建一个Looper对象，这个Looper中维护了一个消息队列MessageQueen。Looper会不断的从消息队列中取消息，然后交给消息的target对象(即Handler)去处理这个消息。如果队列中没有消息，那么Looper就会进入等待状态直到队列中有新消息。大概的过程就是这样，下面我们通过源码来了解下整个过程。  </p>
+<p>我们知道Android应用启动的时候会执行ActivityThread类的main方法，详情请参见<a href="http://blog.csdn.net/luoshengyang/article/details/6747696" target="_blank" rel="external">罗升阳的这篇文章</a>。main方法中会为主线程创建一个Looper对象，这个Looper中维护了一个消息队列MessageQueen。Looper会不断的从消息队列中取消息，然后交给消息的target对象(即Handler)去处理这个消息。如果队列中没有消息，那么Looper就会进入等待状态直到队列中有新消息。大概的过程就是这样，下面我们通过源码来了解下整个过程。<a id="more"></a> </p>
 <p>首先来看看ActivityThread的main方法，这里只保留了跟本文相关的主要代码。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Looper.prepareMainLooper();</span><br><span class="line"></span><br><span class="line">    ActivityThread thread = <span class="keyword">new</span> ActivityThread();</span><br><span class="line">    thread.attach(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (sMainThreadHandler == <span class="keyword">null</span>) &#123;</span><br><span class="line">        sMainThreadHandler = thread.getHandler();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Looper.loop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>main方法中首先调用了<code>Looper.prepareMainLooper()</code>来为主线程创建一个Looper对象，然后在调用<code>Looper.loop()</code>方法进入一个无限循环状态不断的从消息队列中取消息进行处理。那么，我们再跟踪到<code>Looper.prepareMainLooper()</code>中去看看。  </p>
