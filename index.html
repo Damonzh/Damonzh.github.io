@@ -90,7 +90,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/EventBus/" style="font-size: 13.33px;">EventBus</a> <a href="/tags/Gradle/" style="font-size: 16.67px;">Gradle</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a> <a href="/tags/源码/" style="font-size: 13.33px;">源码</a> <a href="/tags/译文/" style="font-size: 16.67px;">译文</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/EventBus/" style="font-size: 13.33px;">EventBus</a> <a href="/tags/Gradle/" style="font-size: 16.67px;">Gradle</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Toolbar/" style="font-size: 10px;">Toolbar</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a> <a href="/tags/源码/" style="font-size: 13.33px;">源码</a> <a href="/tags/译文/" style="font-size: 16.67px;">译文</a>
 					</div>
 				</section>
 				
@@ -166,63 +166,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h3><p>自<a href="http://developer.android.com/reference/android/support/v7/widget/Toolbar.html" target="_blank" rel="external">Toolbar</a>面世也有些年头了，但线上项目中一直没有机会使用。想着再不用就太对不起这么好的控件了，所以最近抽空研究了下Toolbar。写下这篇文章，做个总结。  </p>
-<p><a href="http://developer.android.com/reference/android/support/v7/widget/Toolbar.html" target="_blank" rel="external">Toolbar</a>的问世是为了替换以前的ActionBar，它比<a href="http://developer.android.com/reference/android/support/v7/app/ActionBar.html" target="_blank" rel="external">ActionBar</a>的使用更加灵活方便，它可以放在布局中的任何位置。不过一般都是把Toolbar放在布局的顶部来使用的。下面我就一步步学习下怎么使用Toolbar吧。</p>
-<h3 id="u96C6_u6210"><a href="#u96C6_u6210" class="headerlink" title="集成"></a>集成</h3><p>Toolba这个控件是谷歌在<a href="http://developer.android.com/tools/support-library/index.html" target="_blank" rel="external">14年10月份</a>加入到v7 appcompat兼容包中的。因此，要在项目中使用Toolb的话就必须要引入v7 appcompat包咯。现在用Android Studio创建项目会默认引入该包，如果是使用原来的老项目的话，可以手动引入。只需要在module的build.gradle的依赖里加入下面这行代码即可。  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">compile 'com.android.support:appcompat-v7:23.1.0'</span><br><span class="line">~~~  </span><br><span class="line"></span><br><span class="line">然后就可以在xml或者java中像普通控件那样使用Toolbar了。可以先看下下面这个xml的运行效果。  </span><br><span class="line"></span><br><span class="line">~~~xml</span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout</span><br><span class="line">    xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">    xmlns:app="http://schemas.android.com/apk/res-auto"</span><br><span class="line">    xmlns:tools="http://schemas.android.com/tools"</span><br><span class="line">    android:layout_width="match_parent"</span><br><span class="line">    android:layout_height="match_parent"</span><br><span class="line">    android:fitsSystemWindows="true"</span><br><span class="line">    tools:context="com.demo.activity.MainActivity"&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.AppBarLayout</span><br><span class="line">        android:layout_width="match_parent"</span><br><span class="line">        android:layout_height="wrap_content"</span><br><span class="line">        android:theme="@style/AppTheme.AppBarOverlay"&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id="@+id/toolbar"</span><br><span class="line">            android:layout_width="match_parent"</span><br><span class="line">            android:layout_height="?attr/actionBarSize"</span><br><span class="line">            android:background="?attr/colorPrimary"</span><br><span class="line">            app:popupTheme="@style/AppTheme.PopupOverlay"/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v7.widget.RecyclerView</span><br><span class="line">        android:id="@+id/recycler_view"</span><br><span class="line">        android:layout_width="match_parent"</span><br><span class="line">        android:layout_height="wrap_content" /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br><span class="line">~~~  </span><br><span class="line"></span><br><span class="line">**注** 这里使用到了[CoordinatorLayout](http://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.html)这个控件，暂时就把他想象成RelativeLayout就行了，后面会介绍到它。</span><br><span class="line"></span><br><span class="line">效果长这样  </span><br><span class="line"></span><br><span class="line">![](http://damonzh.github.io/2016/3/09/how-to-use-toolbar/toobar_1)  </span><br><span class="line"></span><br><span class="line">看到效果有人会说了，这跟ActionBar也没啥区别呀。我只能说客官你别着急，继续往下看嘛，这才刚开始。  </span><br><span class="line"></span><br><span class="line">### 配置Toolbar</span><br><span class="line">上面说了，Toolbar最常用的场景就是放在页面顶端当做ActionBar来使用。要把Toolbar当做ActionBar来使用，你只需两行代码就搞定了。  </span><br><span class="line"></span><br><span class="line">~~~java</span><br><span class="line">Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line">setSupportActionBar(toolbar); //如果不往下兼容的话，调用setActionBar(toolbar)即可;</span><br></pre></td></tr></table></figure>
-<p>通过上面的设置，我们就可以通过<code>getSupportActionBar()</code>来获取到一个ActionBar的实例，然后就可以调用ActionBar的方法来进行设置了。比如<code>setDisplayHomeAsUpEnabled(true)</code>就可以在Toolbar上显示一个导航按钮，可以是个箭头，也可以是个汉堡菜单。  </p>
-<p>Toolbar提供了比ActionBar更多的特性，包括可以在Toolba上放置一个导航按钮、品牌logo、标题和子标题、自定义的View以及ActionMenu.  </p>
-<p><img src="http://damonzh.github.io/2016/3/09/how-to-use-toolbar/toobar_2" alt="">  </p>
-<p>我们可以通过java代码来设置这些参数，也可以通过在xml中的属性值来设置。但要记得使用自定义命名空间哟。</p>
-<pre><code class="java">Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-<span class="comment">//设置Toolbar为ActionBar</span>
-setSupportActionBar(toolbar);
-ActionBar ab = getSupportActionBar();
-
-ab.setDisplayHomeAsUpEnabled(<span class="keyword">true</span>);
-<span class="comment">//设置导航按钮，这里设置了一个汉堡按钮</span>
-toolbar.setNavigationIcon(R.drawable.ic_menu);
-
-<span class="comment">//给导航按钮设置点击监听</span>
-toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
-        Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"导航按钮"</span>, Toast.LENGTH_SHORT).show();
-    }
-});
-
-<span class="comment">//设置品牌logo</span>
-toolbar.setLogo(R.mipmap.ic_launcher);
-
-<span class="comment">//设置子标题</span>
-toolbar.setSubtitle(<span class="string">"子标题"</span>);
-</code></pre>
-<pre><code class="xml"><span class="tag">&lt;<span class="name">android.support.v7.widget.Toolbar</span>
-        <span class="attr">android:id</span>=<span class="string">"@+id/toolbar"</span>
-        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span>
-        <span class="attr">android:layout_height</span>=<span class="string">"?attr/actionBarSize"</span>
-        <span class="attr">android:background</span>=<span class="string">"?attr/colorPrimary"</span>
-        <span class="attr">app:layout_scrollFlags</span>=<span class="string">"scroll|enterAlways"</span>
-        <span class="attr">app:popupTheme</span>=<span class="string">"@style/AppTheme.PopupOverlay"</span>&gt;</span>
-
-        <span class="tag">&lt;<span class="name">TextView</span>
-            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span>
-            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>
-            <span class="attr">android:text</span>=<span class="string">"我是自定义的控件"</span> /&gt;</span>
-    <span class="tag">&lt;/<span class="name">android.support.v7.widget.Toolbar</span>&gt;</span>
-</code></pre>
-<p>通过上面这些设置之后，我们的Toolbar就长这样子了。现在看起来是不是像样多了。  </p>
-<p><img src="http://damonzh.github.io/2016/3/09/how-to-use-toolbar/toobar_3" alt="">  </p>
-<p>怎么样，经过上面的介绍。Toolbar的基本用法应该都了解的差不多了吧。后面我会继续总结Toolbar跟其他控件的配合使用，包括<a href="http://developer.android.com/reference/android/support/design/widget/NavigationView.html" target="_blank" rel="external">NavigationView</a>、<a href="http://developer.android.com/reference/android/support/v7/widget/RecyclerView.html" target="_blank" rel="external">RecyclerView</a>、<a href="http://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.html" target="_blank" rel="external">CoordinatorLayout</a>等。敬请期待……</p>
-
+        <h3 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h3><p>自<a href="http://developer.android.com/reference/android/support/v7/widget/Toolbar.html">Toolbar</a>面世也有些年头了，但线上项目中一直没有机会使用。想着再不用就太对不起这么好的控件了，所以最近抽空研究了下Toolbar。写下这篇文章，做个总结。  </p>
+<p><a href="http://developer.android.com/reference/android/support/v7/widget/Toolbar.html">Toolbar</a>的问世是为了替换以前的ActionBar，它比<a href="http://developer.android.com/reference/android/support/v7/app/ActionBar.html">ActionBar</a>的使用更加灵活方便，它可以放在布局中的任何位置。不过一般都是把Toolbar放在布局的顶部来使用的。下面我就一步步学习下怎么使用Toolbar吧。<br>
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Toolbar/">Toolbar</a></li></ul>
+	</div>
+
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/09/how-to-use-toolbar/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
