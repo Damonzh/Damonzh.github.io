@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>怎么使用Toolbar之给Toolbar加上动画 | DamonZhang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="摘要通过上一篇文章我们初次认识了下Toolbar。聊了下怎么把Toolbar集成到项目中和Toolbar的基本设置这两个问题。接下来聊聊怎么给Toolbar加上一些交互效果，类似Play商店上的那些效果。  
+效果一:使Toolbar随着内容区域的滚动而隐藏和显示我们知道手机屏幕的大小时候限的，有时候我们为了显示更多的内容需要隐藏掉一些不相关的内容，比如Toolbar。以前我们可能会使用属性动画或">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎么使用Toolbar之给Toolbar加上动画">
+<meta property="og:url" content="http://yoursite.com/2016/03/10/how-to-use-toolbar-2/index.html">
+<meta property="og:site_name" content="DamonZhang">
+<meta property="og:description" content="摘要通过上一篇文章我们初次认识了下Toolbar。聊了下怎么把Toolbar集成到项目中和Toolbar的基本设置这两个问题。接下来聊聊怎么给Toolbar加上一些交互效果，类似Play商店上的那些效果。  
+效果一:使Toolbar随着内容区域的滚动而隐藏和显示我们知道手机屏幕的大小时候限的，有时候我们为了显示更多的内容需要隐藏掉一些不相关的内容，比如Toolbar。以前我们可能会使用属性动画或">
+<meta property="og:image" content="http://damonzh.github.io/2016/03/10/how-to-use-toolbar-2/toolbar_scroll_1.gif">
+<meta property="og:image" content="http://damonzh.github.io/2016/03/10/how-to-use-toolbar-2/toolbar_scroll_2.gif">
+<meta property="og:updated_time" content="2016-03-10T10:07:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="怎么使用Toolbar之给Toolbar加上动画">
+<meta name="twitter:description" content="摘要通过上一篇文章我们初次认识了下Toolbar。聊了下怎么把Toolbar集成到项目中和Toolbar的基本设置这两个问题。接下来聊聊怎么给Toolbar加上一些交互效果，类似Play商店上的那些效果。  
+效果一:使Toolbar随着内容区域的滚动而隐藏和显示我们知道手机屏幕的大小时候限的，有时候我们为了显示更多的内容需要隐藏掉一些不相关的内容，比如Toolbar。以前我们可能会使用属性动画或">
+  
+  
+    <link rel="icon" href="/img/avatar.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Damon Zhang</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">每天进步,持之以恒</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/EventBus/" style="font-size: 13.33px;">EventBus</a> <a href="/tags/Gradle/" style="font-size: 16.67px;">Gradle</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Toolbar/" style="font-size: 13.33px;">Toolbar</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a> <a href="/tags/源码/" style="font-size: 13.33px;">源码</a> <a href="/tags/译文/" style="font-size: 16.67px;">译文</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Damon Zhang</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Damon Zhang</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">每天进步,持之以恒</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-how-to-use-toolbar-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/10/how-to-use-toolbar-2/" class="article-date">
+  	<time datetime="2016-03-10T06:25:19.000Z" itemprop="datePublished">2016-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      怎么使用Toolbar之给Toolbar加上动画
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Toolbar/">Toolbar</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h3><p>通过<a href="http://www.jianshu.com/p/501e04eab010" target="_blank" rel="external">上一篇</a>文章我们初次认识了下Toolbar。聊了下怎么把Toolbar集成到项目中和Toolbar的基本设置这两个问题。接下来聊聊怎么给Toolbar加上一些交互效果，类似Play商店上的那些效果。  </p>
+<h3 id="u6548_u679C_u4E00_3A_u4F7FToolbar_u968F_u7740_u5185_u5BB9_u533A_u57DF_u7684_u6EDA_u52A8_u800C_u9690_u85CF_u548C_u663E_u793A"><a href="#u6548_u679C_u4E00_3A_u4F7FToolbar_u968F_u7740_u5185_u5BB9_u533A_u57DF_u7684_u6EDA_u52A8_u800C_u9690_u85CF_u548C_u663E_u793A" class="headerlink" title="效果一:使Toolbar随着内容区域的滚动而隐藏和显示"></a>效果一:使Toolbar随着内容区域的滚动而隐藏和显示</h3><p>我们知道手机屏幕的大小时候限的，有时候我们为了显示更多的内容需要隐藏掉一些不相关的内容，比如Toolbar。以前我们可能会使用属性动画或者通过<code>view.animate().translationXX()</code>这个便捷的方法来实现这些效果。现在就不用这么麻烦了，只需要在xml中添加两行代码就可以了。  <a id="more"></a></p>
+<p>为了实现上述的效果，这里需要引入两个新的控件：<a href="http://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.html" target="_blank" rel="external">CoordinatorLayout</a>和<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.html" target="_blank" rel="external">AppBarLayout</a>，这两个控件均位于design兼容包中。所以你需要在module的build.gradle依赖中加入下面一行代码。  </p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">compile</span> <span class="string">'com.android.support:design:23.1.0'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>AppBarLayout：本质上是一个垂直的线性布局。但是他实现了材料设计中app bar的滚动手势的特性。<strong>而为了让这些特性发挥效果，你必须把AppBarLayout作为CoordinatorLayout的一个直接子控件来使用。并且，你还需要为AppBarLayout设置一个支持NestedScroll的兄弟控件。这样父控件CoordinateLayout就知道什么时候来响应滚动事件了</strong> 它的子控件可以通过<code>setScrollFlags(int)</code>或者<code>app:layout_scrollFlags</code>的方式来为自己指定滚动行为。可选的行为有：<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_ENTER_ALWAYS" target="_blank" rel="external">SCROLL_FLAG_ENTER_ALWAYS</a>、<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED" target="_blank" rel="external">SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED</a>、<br><a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_EXIT_UNTIL_COLLAPSED" target="_blank" rel="external">SCROLL_FLAG_EXIT_UNTIL_COLLAPSED</a>、<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_SCROLL" target="_blank" rel="external">SCROLL_FLAG_SCROLL</a>、<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_SNAP" target="_blank" rel="external">SCROLL_FLAG_SNAP</a>。</li>
+<li>CoordinateLayout：本质上是一个增强版的FrameLayout。一般作为一个容器来使用，这样可以让它的子控件实现一些交互效果。可以通过给子控件指定不同的<a href="http://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.Behavior.html" target="_blank" rel="external">Behaviors</a>来实现不同的交互效果。  </li>
+</ul>
+<p>扯了这么多好像也没啥感觉，感觉还真是“Talk is cheap. Show me the code.”呢。那下来就撸代码，看效果吧。  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.CoordinatorLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">"com.demo.activity.MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.design.widget.AppBarLayout</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:theme</span>=<span class="value">"@style/AppTheme.AppBarOverlay"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/toolbar"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"?attr/actionBarSize"</span></span><br><span class="line">            <span class="attribute">android:background</span>=<span class="value">"?attr/colorPrimary"</span></span><br><span class="line">            <span class="attribute">app:layout_scrollFlags</span>=<span class="value">"scroll|enterAlways"</span></span><br><span class="line">            <span class="attribute">app:popupTheme</span>=<span class="value">"@style/AppTheme.PopupOverlay"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.v7.widget.RecyclerView</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/recycler_view"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">android.support.design.widget.CoordinatorLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的布局中有两个地方需要注意：1.Toolbar的<code>app:layout_scrollFlags=&quot;scroll|enterAlways&quot;</code>属性 2.RecyclerView的<code>app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;</code>属性。这两个地方就是上文中加粗部分的提到的注意点。同时，注意下整个布局的结构：CoordinateLayout作为跟布局，内部分别放置了一个AppBarLayout和RecyclerView。Toolbar作为AppBarLayout的子控件而存在。<br>其实，就改这么点地方就可以了。想要的效果已经有了。不信给你看看效果图。  </p>
+<p><img src="http://damonzh.github.io/2016/03/10/how-to-use-toolbar-2/toolbar_scroll_1.gif" alt=""></p>
+<h3 id="u6548_u679C_u4E8C_uFF1A_u591A_u4E2A_u63A7_u4EF6_u534F_u540C_u4F5C_u6218_28_u5176_u5B9E_u6CA1_u60F3_u51FA_u6765_u600E_u4E48_u63CF_u8FF0_u8FD9_u79CD_u6548_u679C_29"><a href="#u6548_u679C_u4E8C_uFF1A_u591A_u4E2A_u63A7_u4EF6_u534F_u540C_u4F5C_u6218_28_u5176_u5B9E_u6CA1_u60F3_u51FA_u6765_u600E_u4E48_u63CF_u8FF0_u8FD9_u79CD_u6548_u679C_29" class="headerlink" title="效果二：多个控件协同作战(其实没想出来怎么描述这种效果)"></a>效果二：多个控件协同作战(其实没想出来怎么描述这种效果)</h3><p>这种效果我还不好描述，直接上图一看你就明白。一图顶千言啊！  </p>
+<p><img src="http://damonzh.github.io/2016/03/10/how-to-use-toolbar-2/toolbar_scroll_2.gif" alt="">  </p>
+<p>从上面的效果图中可以看到，随着内容区域的滑动顶部的图片和Toolbar也会做出相应的动作。图片会收缩和展开，Toolbar的背景在透明和蓝色之间变化。要实现这种类似Play商店的效果，还需要引入一个新的控件：CollapsingToolbarLayout。该控件同样位于design兼容包中。  </p>
+<p>CollapsingToolbarLayout是对Toolbar的包装，它实现了可收缩的app bar效果，而且被设计为AppBarLayout的直接子类来使用的。</p>
+<p>引入CollapsingToolbarLayout控件后，我的布局变成了这样子。  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.CoordinatorLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">"com.demo.activity.MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.design.widget.AppBarLayout</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:theme</span>=<span class="value">"@style/AppTheme.AppBarOverlay"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">android.support.design.widget.CollapsingToolbarLayout</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"240dp"</span></span><br><span class="line">            <span class="attribute">app:collapsedTitleGravity</span>=<span class="value">"center"</span></span><br><span class="line">            <span class="attribute">app:contentScrim</span>=<span class="value">"@color/colorPrimary"</span></span><br><span class="line">            <span class="attribute">app:layout_scrollFlags</span>=<span class="value">"scroll|exitUntilCollapsed"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="title">ImageView</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">                <span class="attribute">android:scaleType</span>=<span class="value">"centerCrop"</span></span><br><span class="line">                <span class="attribute">android:src</span>=<span class="value">"@drawable/cheese_1"</span></span><br><span class="line">                <span class="attribute">app:layout_collapseMode</span>=<span class="value">"parallax"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span><br><span class="line">                <span class="attribute">android:id</span>=<span class="value">"@+id/toolbar"</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"?attr/actionBarSize"</span></span><br><span class="line">                <span class="attribute">app:layout_collapseMode</span>=<span class="value">"pin"</span></span><br><span class="line">                <span class="attribute">app:popupTheme</span>=<span class="value">"@style/AppTheme.PopupOverlay"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">android.support.design.widget.CollapsingToolbarLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.v7.widget.RecyclerView</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/recycler_view"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">android.support.design.widget.CoordinatorLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，Toolbar被CollapsingToolbarLayout包裹起来了，并且给Toolbar添加了一个ImageView的兄弟控件。同时在CollapsingToolbarLayout的子控件上分别设置了<code>app:layout_collapseMode</code>属性(姑且就叫收缩模式吧)，该属性有两种值：parallax和pin。parallax属性值会让的CollapsingToolbarLayout子控件在滚动时呈现出视差效果，而pin则会让它的子控件保持不动。从上面设置的值对比着效果图看，应该就比较清晰了。  </p>
+<p>CollapsingToolbarLayout有很多属性可以控制滚动过程中文字的滚动轨迹，文字样式，文字的位置以及它的子控件之间的配合方式。比如collapsedTitleGravity可以设置收缩结束时title的对其方式，上例中使用了居中对齐，所以title最终显示在了toolbar的中间，默认是靠左显示的。  </p>
+<p>其实之前提到的这些新控件配合起来可以实现的效果还是挺多的，这里面有一个起到重要角色的对象：<a href="http://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.Behavior.html" target="_blank" rel="external">Behavior</a>。它定义了CoordinateLayout的子控件之间的交互行为，如果想实现一些自定义的交互效果，那么就需要自己去实现一些Behavior了。关于Behavior的自定义目前还不太了解，以后有机会的话也会研究下。  </p>
+<p>这篇就说这么多吧，计划下一篇把CollapsingToolbarLayout的那些属性总结下，然后再搞下Android抽屉的用法。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/09/how-to-use-toolbar/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">怎么使用Toolbar之集成与属性配置</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="how-to-use-toolbar-2" data-title="怎么使用Toolbar之给Toolbar加上动画" data-url="http://yoursite.com/2016/03/10/how-to-use-toolbar-2/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Damon Zhang
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
