@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://damonzh.github.io/2016/03/14/how-to-use-vector-drawable/vertor_original.png">
 <meta property="og:image" content="http://damonzh.github.io/2016/03/14/how-to-use-vector-drawable/vector_scaled.png">
 <meta property="og:image" content="http://damonzh.github.io/2016/03/14/how-to-use-vector-drawable/animated_vector.gif">
-<meta property="og:updated_time" content="2016-03-14T10:15:11.000Z">
+<meta property="og:updated_time" content="2016-03-14T10:25:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VectorDrawable怎么玩">
 <meta name="twitter:description" content="摘要从5.0(API等级21)开始，android开始支持矢量图了。关于什么是矢量图以及矢量图有什么优缺点不在本文的涉及范围之内，具体可以参考矢量图百科。不过这里要提一下它的优点：  
@@ -248,7 +248,7 @@
  <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> ImageView imageView = (ImageView) findViewById(R.id.image_view);</span><br><span class="line">Drawable drawable = imageView.getDrawable();</span><br><span class="line"><span class="comment">//AnimatedVectorDrawableCompat实现了Animatable接口</span></span><br><span class="line"><span class="keyword">if</span> (drawable <span class="keyword">instanceof</span> Animatable)&#123;</span><br><span class="line">    ((Animatable) drawable).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 这样就实现了矢量图动画，看看效果图吧。  </p>
 <p> <img src="http://damonzh.github.io/2016/03/14/how-to-use-vector-drawable/animated_vector.gif" alt="">  </p>
-<p> 好了，关于矢量图以及矢量图动画的使用就说这么多。具体的一些细节以及xml中的其他属性啥的怎么使用可以参考官方文档，自己亲自试一试就会很明了了。</p>
+<p> 好了，关于矢量图以及矢量图动画的使用就说这么多。具体的一些细节以及xml中的其他属性啥的怎么使用可以参考官方文档，自己亲自试一试就会很明了了。源码在<a href="https://github.com/Damonzh/VectorDrawableDemo" target="_blank" rel="external">这里</a>，欢迎star and fork。</p>
 
       
     </div>
