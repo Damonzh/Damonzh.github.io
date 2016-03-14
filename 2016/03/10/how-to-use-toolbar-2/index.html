@@ -15,7 +15,7 @@
 效果一:使Toolbar随着内容区域的滚动而隐藏和显示我们知道手机屏幕的大小时候限的，有时候我们为了显示更多的内容需要隐藏掉一些不相关的内容，比如Toolbar。以前我们可能会使用属性动画或">
 <meta property="og:image" content="http://damonzh.github.io/2016/03/10/how-to-use-toolbar-2/toolbar_scroll_1.gif">
 <meta property="og:image" content="http://damonzh.github.io/2016/03/10/how-to-use-toolbar-2/toolbar_scroll_2.gif">
-<meta property="og:updated_time" content="2016-03-10T10:07:44.000Z">
+<meta property="og:updated_time" content="2016-03-10T10:22:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="怎么使用Toolbar之给Toolbar加上动画">
 <meta name="twitter:description" content="摘要通过上一篇文章我们初次认识了下Toolbar。聊了下怎么把Toolbar集成到项目中和Toolbar的基本设置这两个问题。接下来聊聊怎么给Toolbar加上一些交互效果，类似Play商店上的那些效果。  
@@ -96,7 +96,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/EventBus/" style="font-size: 13.33px;">EventBus</a> <a href="/tags/Gradle/" style="font-size: 16.67px;">Gradle</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Toolbar/" style="font-size: 13.33px;">Toolbar</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a> <a href="/tags/源码/" style="font-size: 13.33px;">源码</a> <a href="/tags/译文/" style="font-size: 16.67px;">译文</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/AnimatedVectorDrawable/" style="font-size: 10px;">AnimatedVectorDrawable</a> <a href="/tags/EventBus/" style="font-size: 13.33px;">EventBus</a> <a href="/tags/Gradle/" style="font-size: 16.67px;">Gradle</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Toolbar/" style="font-size: 13.33px;">Toolbar</a> <a href="/tags/VectorDrawable/" style="font-size: 10px;">VectorDrawable</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a> <a href="/tags/源码/" style="font-size: 13.33px;">源码</a> <a href="/tags/译文/" style="font-size: 16.67px;">译文</a>
 					</div>
 				</section>
 				
@@ -182,7 +182,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h3><p>通过<a href="http://www.jianshu.com/p/501e04eab010" target="_blank" rel="external">上一篇</a>文章我们初次认识了下Toolbar。聊了下怎么把Toolbar集成到项目中和Toolbar的基本设置这两个问题。接下来聊聊怎么给Toolbar加上一些交互效果，类似Play商店上的那些效果。  </p>
-<h3 id="u6548_u679C_u4E00_3A_u4F7FToolbar_u968F_u7740_u5185_u5BB9_u533A_u57DF_u7684_u6EDA_u52A8_u800C_u9690_u85CF_u548C_u663E_u793A"><a href="#u6548_u679C_u4E00_3A_u4F7FToolbar_u968F_u7740_u5185_u5BB9_u533A_u57DF_u7684_u6EDA_u52A8_u800C_u9690_u85CF_u548C_u663E_u793A" class="headerlink" title="效果一:使Toolbar随着内容区域的滚动而隐藏和显示"></a>效果一:使Toolbar随着内容区域的滚动而隐藏和显示</h3><p>我们知道手机屏幕的大小时候限的，有时候我们为了显示更多的内容需要隐藏掉一些不相关的内容，比如Toolbar。以前我们可能会使用属性动画或者通过<code>view.animate().translationXX()</code>这个便捷的方法来实现这些效果。现在就不用这么麻烦了，只需要在xml中添加两行代码就可以了。  <a id="more"></a></p>
+<h3 id="u6548_u679C_u4E00_3A_u4F7FToolbar_u968F_u7740_u5185_u5BB9_u533A_u57DF_u7684_u6EDA_u52A8_u800C_u9690_u85CF_u548C_u663E_u793A"><a href="#u6548_u679C_u4E00_3A_u4F7FToolbar_u968F_u7740_u5185_u5BB9_u533A_u57DF_u7684_u6EDA_u52A8_u800C_u9690_u85CF_u548C_u663E_u793A" class="headerlink" title="效果一:使Toolbar随着内容区域的滚动而隐藏和显示"></a>效果一:使Toolbar随着内容区域的滚动而隐藏和显示</h3><p>我们知道手机屏幕的大小时候限的，有时候我们为了显示更多的内容需要隐藏掉一些不相关的内容，比如Toolbar。以前我们可能会使用属性动画或者通过<code>view.animate().translationXX()</code>这个便捷的方法来实现这些效果。现在就不用这么麻烦了，只需要在xml中添加两行代码就可以了。 </p>
 <p>为了实现上述的效果，这里需要引入两个新的控件：<a href="http://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.html" target="_blank" rel="external">CoordinatorLayout</a>和<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.html" target="_blank" rel="external">AppBarLayout</a>，这两个控件均位于design兼容包中。所以你需要在module的build.gradle依赖中加入下面一行代码。  </p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">compile</span> <span class="string">'com.android.support:design:23.1.0'</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -211,6 +211,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/03/14/how-to-use-vector-drawable/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          VectorDrawable怎么玩
+        
+      </div>
+    </a>
   
   
     <a href="/2016/03/09/how-to-use-toolbar/" id="article-nav-older" class="article-nav-link-wrap">
