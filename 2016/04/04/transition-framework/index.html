@@ -5,15 +5,49 @@
   
   <title>DamonZhang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
+  <meta name="description" content="title: 使用Transition FrameWork实现有意义的转场动画(译)date: 2016-4-4 16:32:45  
+tags: [Android, 译文]原文  
+Android Transition Framework可以实现三种效果:  
+
+不同Activity之间切换时,Activityc的内容(contentView)转场动画
+不同Activity之间切换时，如果使用了">
+<meta property="og:type" content="article">
 <meta property="og:title" content="DamonZhang">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/04/04/transition-framework/index.html">
 <meta property="og:site_name" content="DamonZhang">
-<meta property="og:description">
+<meta property="og:description" content="title: 使用Transition FrameWork实现有意义的转场动画(译)date: 2016-4-4 16:32:45  
+tags: [Android, 译文]原文  
+Android Transition Framework可以实现三种效果:  
+
+不同Activity之间切换时,Activityc的内容(contentView)转场动画
+不同Activity之间切换时，如果使用了">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_A_to_B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_explode.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_slide.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_fade.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_fade.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_B_to_A.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_fade.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_fade2.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_anim.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_no_overlap.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_overlap.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_no_overlap.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/scenes_anim.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/view_layout_anim.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_reveal_anim.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_green.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_red.gif">
+<meta property="og:updated_time" content="2016-04-04T08:44:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DamonZhang">
-<meta name="twitter:description">
+<meta name="twitter:description" content="title: 使用Transition FrameWork实现有意义的转场动画(译)date: 2016-4-4 16:32:45  
+tags: [Android, 译文]原文  
+Android Transition Framework可以实现三种效果:  
+
+不同Activity之间切换时,Activityc的内容(contentView)转场动画
+不同Activity之间切换时，如果使用了">
   
   
     <link rel="icon" href="/img/avatar.png">
@@ -138,9 +172,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-transition-framework" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-transition-framework" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/04/04/transition-framework/" class="article-date">
@@ -399,628 +431,62 @@ btnRed.setLayoutParams(layoutParams);
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/14/how-to-use-vector-drawable/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VectorDrawable怎么玩</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-  
-    <article id="post-how-to-use-vector-drawable" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/14/how-to-use-vector-drawable/" class="article-date">
-  	<time datetime="2016-03-14T07:06:33.000Z" itemprop="datePublished">2016-03-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/14/how-to-use-vector-drawable/">VectorDrawable怎么玩</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h3><p>从5.0(API等级21)开始，android开始支持矢量图了。关于什么是矢量图以及矢量图有什么优缺点不在本文的涉及范围之内，具体可以参考<a href="https://zh.wikipedia.org/wiki/%E7%9F%A2%E9%87%8F%E5%9B%BE%E5%BD%A2">矢量图百科</a>。不过这里要提一下它的优点：  </p>
-<ul>
-<li>保存最少的信息，文件大小比位图要小，并且文件大小与物体的大小无关</li>
-<li>任意放大矢量图形，不会丢失细节或影响清晰度，因为矢量图形是与分辨率无关的。  </li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AnimatedVectorDrawable/">AnimatedVectorDrawable</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VectorDrawable/">VectorDrawable</a></li></ul>
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-      
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/14/how-to-use-vector-drawable/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="transition-framework" data-title="" data-url="http://yoursite.com/2016/04/04/transition-framework/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-
-  
-    <article id="post-how-to-use-toolbar-2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/10/how-to-use-toolbar-2/" class="article-date">
-  	<time datetime="2016-03-10T06:25:19.000Z" itemprop="datePublished">2016-03-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/10/how-to-use-toolbar-2/">怎么使用Toolbar之给Toolbar加上动画</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h3><p>通过<a href="http://www.jianshu.com/p/501e04eab010" target="_blank" rel="external">上一篇</a>文章我们初次认识了下Toolbar。聊了下怎么把Toolbar集成到项目中和Toolbar的基本设置这两个问题。接下来聊聊怎么给Toolbar加上一些交互效果，类似Play商店上的那些效果。  </p>
-<h3 id="u6548_u679C_u4E00_3A_u4F7FToolbar_u968F_u7740_u5185_u5BB9_u533A_u57DF_u7684_u6EDA_u52A8_u800C_u9690_u85CF_u548C_u663E_u793A"><a href="#u6548_u679C_u4E00_3A_u4F7FToolbar_u968F_u7740_u5185_u5BB9_u533A_u57DF_u7684_u6EDA_u52A8_u800C_u9690_u85CF_u548C_u663E_u793A" class="headerlink" title="效果一:使Toolbar随着内容区域的滚动而隐藏和显示"></a>效果一:使Toolbar随着内容区域的滚动而隐藏和显示</h3><p>我们知道手机屏幕的大小时候限的，有时候我们为了显示更多的内容需要隐藏掉一些不相关的内容，比如Toolbar。以前我们可能会使用属性动画或者通过<code>view.animate().translationXX()</code>这个便捷的方法来实现这些效果。现在就不用这么麻烦了，只需要在xml中添加两行代码就可以了。 </p>
-<p>为了实现上述的效果，这里需要引入两个新的控件：<a href="http://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.html" target="_blank" rel="external">CoordinatorLayout</a>和<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.html" target="_blank" rel="external">AppBarLayout</a>，这两个控件均位于design兼容包中。所以你需要在module的build.gradle依赖中加入下面一行代码。  </p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">compile</span> <span class="string">'com.android.support:design:23.1.0'</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>AppBarLayout：本质上是一个垂直的线性布局。但是他实现了材料设计中app bar的滚动手势的特性。<strong>而为了让这些特性发挥效果，你必须把AppBarLayout作为CoordinatorLayout的一个直接子控件来使用。并且，你还需要为AppBarLayout设置一个支持NestedScroll的兄弟控件。这样父控件CoordinateLayout就知道什么时候来响应滚动事件了</strong> 它的子控件可以通过<code>setScrollFlags(int)</code>或者<code>app:layout_scrollFlags</code>的方式来为自己指定滚动行为。可选的行为有：<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_ENTER_ALWAYS" target="_blank" rel="external">SCROLL_FLAG_ENTER_ALWAYS</a>、<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED" target="_blank" rel="external">SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED</a>、<br><a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_EXIT_UNTIL_COLLAPSED" target="_blank" rel="external">SCROLL_FLAG_EXIT_UNTIL_COLLAPSED</a>、<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_SCROLL" target="_blank" rel="external">SCROLL_FLAG_SCROLL</a>、<a href="http://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_SNAP" target="_blank" rel="external">SCROLL_FLAG_SNAP</a>。</li>
-<li>CoordinateLayout：本质上是一个增强版的FrameLayout。一般作为一个容器来使用，这样可以让它的子控件实现一些交互效果。可以通过给子控件指定不同的<a href="http://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.Behavior.html" target="_blank" rel="external">Behaviors</a>来实现不同的交互效果。  </li>
-</ul>
-<p>扯了这么多好像也没啥感觉，感觉还真是“Talk is cheap. Show me the code.”呢。那下来就撸代码，看效果吧。  </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.CoordinatorLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">"com.demo.activity.MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.design.widget.AppBarLayout</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:theme</span>=<span class="value">"@style/AppTheme.AppBarOverlay"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/toolbar"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"?attr/actionBarSize"</span></span><br><span class="line">            <span class="attribute">android:background</span>=<span class="value">"?attr/colorPrimary"</span></span><br><span class="line">            <span class="attribute">app:layout_scrollFlags</span>=<span class="value">"scroll|enterAlways"</span></span><br><span class="line">            <span class="attribute">app:popupTheme</span>=<span class="value">"@style/AppTheme.PopupOverlay"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.v7.widget.RecyclerView</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/recycler_view"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">android.support.design.widget.CoordinatorLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>上面的布局中有两个地方需要注意：1.Toolbar的<code>app:layout_scrollFlags=&quot;scroll|enterAlways&quot;</code>属性 2.RecyclerView的<code>app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;</code>属性。这两个地方就是上文中加粗部分的提到的注意点。同时，注意下整个布局的结构：CoordinateLayout作为跟布局，内部分别放置了一个AppBarLayout和RecyclerView。Toolbar作为AppBarLayout的子控件而存在。<br>其实，就改这么点地方就可以了。想要的效果已经有了。不信给你看看效果图。  </p>
-<p><img src="http://damonzh.github.io/2016/03/10/how-to-use-toolbar-2/toolbar_scroll_1.gif" alt=""></p>
-<h3 id="u6548_u679C_u4E8C_uFF1A_u591A_u4E2A_u63A7_u4EF6_u534F_u540C_u4F5C_u6218_28_u5176_u5B9E_u6CA1_u60F3_u51FA_u6765_u600E_u4E48_u63CF_u8FF0_u8FD9_u79CD_u6548_u679C_29"><a href="#u6548_u679C_u4E8C_uFF1A_u591A_u4E2A_u63A7_u4EF6_u534F_u540C_u4F5C_u6218_28_u5176_u5B9E_u6CA1_u60F3_u51FA_u6765_u600E_u4E48_u63CF_u8FF0_u8FD9_u79CD_u6548_u679C_29" class="headerlink" title="效果二：多个控件协同作战(其实没想出来怎么描述这种效果)"></a>效果二：多个控件协同作战(其实没想出来怎么描述这种效果)</h3><p>这种效果我还不好描述，直接上图一看你就明白。一图顶千言啊！  </p>
-<p><img src="http://damonzh.github.io/2016/03/10/how-to-use-toolbar-2/toolbar_scroll_2.gif" alt="">  </p>
-<p>从上面的效果图中可以看到，随着内容区域的滑动顶部的图片和Toolbar也会做出相应的动作。图片会收缩和展开，Toolbar的背景在透明和蓝色之间变化。要实现这种类似Play商店的效果，还需要引入一个新的控件：CollapsingToolbarLayout。该控件同样位于design兼容包中。  </p>
-<p>CollapsingToolbarLayout是对Toolbar的包装，它实现了可收缩的app bar效果，而且被设计为AppBarLayout的直接子类来使用的。</p>
-<p>引入CollapsingToolbarLayout控件后，我的布局变成了这样子。  </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.CoordinatorLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">"com.demo.activity.MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.design.widget.AppBarLayout</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:theme</span>=<span class="value">"@style/AppTheme.AppBarOverlay"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">android.support.design.widget.CollapsingToolbarLayout</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"240dp"</span></span><br><span class="line">            <span class="attribute">app:collapsedTitleGravity</span>=<span class="value">"center"</span></span><br><span class="line">            <span class="attribute">app:contentScrim</span>=<span class="value">"@color/colorPrimary"</span></span><br><span class="line">            <span class="attribute">app:layout_scrollFlags</span>=<span class="value">"scroll|exitUntilCollapsed"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="title">ImageView</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">                <span class="attribute">android:scaleType</span>=<span class="value">"centerCrop"</span></span><br><span class="line">                <span class="attribute">android:src</span>=<span class="value">"@drawable/cheese_1"</span></span><br><span class="line">                <span class="attribute">app:layout_collapseMode</span>=<span class="value">"parallax"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span><br><span class="line">                <span class="attribute">android:id</span>=<span class="value">"@+id/toolbar"</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"?attr/actionBarSize"</span></span><br><span class="line">                <span class="attribute">app:layout_collapseMode</span>=<span class="value">"pin"</span></span><br><span class="line">                <span class="attribute">app:popupTheme</span>=<span class="value">"@style/AppTheme.PopupOverlay"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">android.support.design.widget.CollapsingToolbarLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.v7.widget.RecyclerView</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/recycler_view"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">android.support.design.widget.CoordinatorLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以看到，Toolbar被CollapsingToolbarLayout包裹起来了，并且给Toolbar添加了一个ImageView的兄弟控件。同时在CollapsingToolbarLayout的子控件上分别设置了<code>app:layout_collapseMode</code>属性(姑且就叫收缩模式吧)，该属性有两种值：parallax和pin。parallax属性值会让的CollapsingToolbarLayout子控件在滚动时呈现出视差效果，而pin则会让它的子控件保持不动。从上面设置的值对比着效果图看，应该就比较清晰了。  </p>
-<p>CollapsingToolbarLayout有很多属性可以控制滚动过程中文字的滚动轨迹，文字样式，文字的位置以及它的子控件之间的配合方式。比如collapsedTitleGravity可以设置收缩结束时title的对其方式，上例中使用了居中对齐，所以title最终显示在了toolbar的中间，默认是靠左显示的。  </p>
-<p>其实之前提到的这些新控件配合起来可以实现的效果还是挺多的，这里面有一个起到重要角色的对象：<a href="http://developer.android.com/reference/android/support/design/widget/CoordinatorLayout.Behavior.html" target="_blank" rel="external">Behavior</a>。它定义了CoordinateLayout的子控件之间的交互行为，如果想实现一些自定义的交互效果，那么就需要自己去实现一些Behavior了。关于Behavior的自定义目前还不太了解，以后有机会的话也会研究下。  </p>
-<p>这篇就说这么多吧，计划下一篇把CollapsingToolbarLayout的那些属性总结下，然后再搞下Android抽屉的用法。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Toolbar/">Toolbar</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-how-to-use-toolbar" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/09/how-to-use-toolbar/" class="article-date">
-  	<time datetime="2016-03-09T08:17:59.000Z" itemprop="datePublished">2016-03-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/09/how-to-use-toolbar/">怎么使用Toolbar之集成与属性配置</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h3><p>自<a href="http://developer.android.com/reference/android/support/v7/widget/Toolbar.html">Toolbar</a>面世也有些年头了，但线上项目中一直没有机会使用。想着再不用就太对不起这么好的控件了，所以最近抽空研究了下Toolbar。写下这篇文章，做个总结。  </p>
-<p><a href="http://developer.android.com/reference/android/support/v7/widget/Toolbar.html">Toolbar</a>的问世是为了替换以前的ActionBar，它比<a href="http://developer.android.com/reference/android/support/v7/app/ActionBar.html">ActionBar</a>的使用更加灵活方便，它可以放在布局中的任何位置。不过一般都是把Toolbar放在布局的顶部来使用的。下面我就一步步学习下怎么使用Toolbar吧。<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Toolbar/">Toolbar</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/09/how-to-use-toolbar/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-handler-looper-messagequeen" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/handler-looper-messagequeen/" class="article-date">
-  	<time datetime="2016-01-10T03:38:48.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/handler-looper-messagequeen/">Handler机制分析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近翻译了一片关于Context泄露的<a href="https://github.com/bboyfeiyu/android-tech-frontier/blob/master/issue-34/How%20to%20Leak%20a%20Context.md">文章</a>,其中提到了Handler的一些知识点。想想当初自己研究这块的时候也是看着源码一点点抠出来的。只不过那时候没有做个总结，现在正好借着这个机会把这块知识点总结下，也算是做个备注了。  </p>
-<p>我们知道Android应用启动的时候会执行ActivityThread类的main方法，详情请参见<a href="http://blog.csdn.net/luoshengyang/article/details/6747696">罗升阳的这篇文章</a>。main方法中会为主线程创建一个Looper对象，这个Looper中维护了一个消息队列MessageQueen。Looper会不断的从消息队列中取消息，然后交给消息的target对象(即Handler)去处理这个消息。如果队列中没有消息，那么Looper就会进入等待状态直到队列中有新消息。大概的过程就是这样，下面我们通过源码来了解下整个过程。
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Handler/">Handler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/10/handler-looper-messagequeen/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-event-bus-study-post" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/28/event-bus-study-post/" class="article-date">
-  	<time datetime="2015-12-28T09:11:41.000Z" itemprop="datePublished">2015-12-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/28/event-bus-study-post/">学习EventBus之发布事件</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在<a href="http://damonzh.github.io/2015/12/18/event-bus-study-register/">上篇文章</a>中，我们从源码里了解了EventBus的注册机制。这篇文章我们接着上篇，把另一半——发布来了解一下。  </p>
-<p>我们一般可以通过<code>eventBus.getDefault().post(event)</code>的方式来发布一个事件，然后订阅了这个类型事件的类就会接收到这个事件并进行相应的处理。那么，我们就从<code>post(event)</code>下手，看看post的原理是什么样子的。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Posts the given event to the event bus. */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">post</span><span class="params">(Object event)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//获取当前发布线程一个线程局部变量，这个变量存储了</span></span><br><span class="line">    <span class="comment">//发布事件，事件订阅者以及发布是否是主线程等信息</span></span><br><span class="line">    PostingThreadState postingState = currentPostingThreadState.get();</span><br><span class="line">    <span class="comment">//当前线程的事件队列</span></span><br><span class="line">    List&lt;Object&gt; eventQueue = postingState.eventQueue;</span><br><span class="line">    <span class="comment">//将新发布的事件加入队列</span></span><br><span class="line">    eventQueue.add(event);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!postingState.isPosting) &#123;</span><br><span class="line">        <span class="comment">//当前发布的线程是否在主线程</span></span><br><span class="line">        postingState.isMainThread = Looper.getMainLooper() == Looper.myLooper();</span><br><span class="line">        <span class="comment">//更改发布状态</span></span><br><span class="line">        postingState.isPosting = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (postingState.canceled) &#123;</span><br><span class="line">        <span class="comment">//这个状态会在发布成功后重置为false</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> EventBusException(<span class="string">"Internal error. Abort state was not reset"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (!eventQueue.isEmpty()) &#123;<span class="comment">//事件队列不为空 推送队列头的事件 并从队列中移除该事件</span></span><br><span class="line">                postSingleEvent(eventQueue.remove(<span class="number">0</span>), postingState);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">//结束发布 重置推送状态参数</span></span><br><span class="line">            postingState.isPosting = <span class="keyword">false</span>;</span><br><span class="line">            postingState.isMainThread = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到在当前线程里有个线程局部变量<code>PostingThreadState</code>,
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EventBus/">EventBus</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/28/event-bus-study-post/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-layout-inflater-study" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/21/layout-inflater-study/" class="article-date">
-  	<time datetime="2015-12-21T13:33:22.000Z" itemprop="datePublished">2015-12-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/21/layout-inflater-study/">LayoutInflater的传参问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Android开发中，我们会经常需要把一个xml解析成一个View。最常见的就是在Adapter的getView方法中通过LayoutInflater把一个布局文件解析成一个View。但是，这里经常会出现一些问题，比如我在item布局文件的根布局中设置的属性经常会没效果等等。其实，在我们在Activity的onCreate方法中调用Activity的setContentView方法给Activity设置布局的时候，底层也是通过LayoutInflater来将传入的布局解析成View然后在添加到界面上的。所以，为了搞清楚LayoutInflater的工作原理，我翻了翻源码，基本上把问题搞明白了。  </p>
-<p>先来看一个问题：在<strong>给ListView填充item布局</strong>时，
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/21/layout-inflater-study/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-gradle-tips-3" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/20/gradle-tips-3/" class="article-date">
-  	<time datetime="2015-12-20T08:32:45.000Z" itemprop="datePublished">2015-12-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/20/gradle-tips-3/">Gradle小知识#3：任务的顺序</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<ul>
-<li>原文链接 : <a href="http://trickyandroid.com/gradle-tip-3-tasks-ordering/">Gradle tip #3: Tasks ordering</a></li>
-<li>原文作者 : <a href="http://trickyandroid.com/">Tricky Android</a></li>
-<li>译文出自 : <a href="http://www.devtf.cn">开发技术前线 www.devtf.cn。本译文已授权开发者头条（链接：http://toutiao.io/download）享有独家转载权，未经允许，不得转载!</a></li>
-<li>译者 : <a href="https://github.com/Damonzh">Damonzh</a>  </li>
-<li>校对者: <a href="https://github.com/desmond1121">desmond1121</a>  </li>
-<li>状态 :  完成 </li>
-</ul>
-</blockquote>
-<p>我发现在使用Gradle的过程中遇到的很多问题都跟任务的顺序有关系，不管是已经存在的任务还是我自定义的任务。很显然，如果任务能在正确的时间执行的话，构建任务就能更好的工作了。</p>
-<p>所以让我们深入了解下怎么更改任务的执行上顺序这个问题。</p>
-<h3 id="dependsOn"><a href="#dependsOn" class="headerlink" title="dependsOn"></a>dependsOn</h3><p>我觉得让某个任务在另一个任务之后执行的最简单的方法就是使用<a href="https://docs.gradle.org/current/dsl/org.gradle.api.Task.html#org.gradle.api.Task:dependsOn(java.lang.Object[]"><code>dependsOn</code></a>)方法。  </p>
-<p>假设有一个任务<code>A</code>，现在我们要添加一个任务<code>B</code>并且任务<code>B</code>只有在任务<code>A</code>执行后它才会执行：</p>
-<p><img src="http://trickyandroid.com/content/images/2015/07/1-3.png" alt=""></p>
-<p>先来定义两个任务，任务<code>A</code>和<code>B</code>：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> A &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from A'</span>&#125;</span><br><span class="line"><span class="keyword">task</span> B &lt;&lt; &#123;<span class="keyword">println</span> <span class="string">'Hello from B'</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>然后你要做的就是告诉Gradle任务<code>B</code>依赖于任务<code>A</code></p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B.dependsOn A</span><br></pre></td></tr></table></figure>
-<p>这样不管什么时候我执行任务<code>B</code>，Gradle也会执行任务<code>A</code><br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle/">Gradle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/20/gradle-tips-3/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-gradle-tips-2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/20/gradle-tips-2/" class="article-date">
-  	<time datetime="2015-12-20T08:32:42.000Z" itemprop="datePublished">2015-12-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/20/gradle-tips-2/">Gradle小知识#2：学学语法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<ul>
-<li>原文链接 : <a href="http://trickyandroid.com/gradle-tip-2-understanding-syntax/">Gradle tip #2: understanding syntax</a></li>
-<li>原文作者 : <a href="http://trickyandroid.com/">Tricky Android</a></li>
-<li>译文出自 : <a href="http://www.devtf.cn">开发技术前线 www.devtf.cn。本译文已授权开发者头条（链接：http://toutiao.io/download）享有独家转载权，未经允许，不得转载!</a></li>
-<li>译者 : <a href="https://github.com/Damonzh">Damonzh</a>  </li>
-<li>校对者: <a href="https://github.com/desmond1121">desmond1121</a>  </li>
-<li>状态 :  完成 </li>
-</ul>
-</blockquote>
-<p>在第一部分，我们聊了下Gradle中的任务以及构建过程中的不同阶段。但是，在我发布上篇文章之后我意识到在继续深入Gradle之前，我们最好了解下Gradle的语法。以免被复杂的<code>build.gradle</code>脚本吓到。所以这篇我们来聊聊Gradle的语法。</p>
-<h3 id="u8BED_u6CD5"><a href="#u8BED_u6CD5" class="headerlink" title="语法"></a>语法</h3><p>Gradle构建脚本是使用<a href="http://www.groovy-lang.org/">Groovy</a>语言写的。所以在继续深入之前我想说几个Groovy中比较重要的概念。Groovy的语法跟Java语法很类似，所以希望你在理解上不会有大问题。 </p>
-<p>如果你对Groovy比较熟悉，那你可以跳过这部分。</p>
-<p>要理解Gradle脚本，你需要明白Groovy中很重要的一个概念——闭包。</p>
-<h4 id="u95ED_u5305"><a href="#u95ED_u5305" class="headerlink" title="闭包"></a>闭包</h4><p>要理解Gradle就必须搞明白<a href="http://www.groovy-lang.org/closures.html"><code>闭包</code></a>这个重要的概念。闭包是一个独立的代码块，它可以接收参数、可以有返回值，而且还可以赋值给变量。有点像<code>Callable</code>接口、<code>Future</code>和方法指针的混合体，随便你怎么叫。</p>
-<p>大体来说就是个代码块，当你调用它的时候它才会执行，而非创建时就执行。下面是一个简单的闭包的例子：<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle/">Gradle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/20/gradle-tips-2/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-gradle-tips-1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/20/gradle-tips-1/" class="article-date">
-  	<time datetime="2015-12-20T08:32:38.000Z" itemprop="datePublished">2015-12-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/20/gradle-tips-1/">Gradle小知识#1：tasks</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<ul>
-<li>原文链接 : <a href="http://trickyandroid.com/gradle-tip-1-tasks/">Gradle tip #1: tasks</a></li>
-<li>原文作者 : <a href="http://trickyandroid.com/">Tricky Android</a></li>
-<li>译文出自 : <a href="http://www.devtf.cn">开发技术前线 www.devtf.cn。本译文已授权开发者头条（链接：http://toutiao.io/download）享有独家转载权，未经允许，不得转载!</a></li>
-<li>译者 : <a href="https://github.com/Damonzh">Damonzh</a>  </li>
-<li>校对者: <a href="https://github.com/desmond1121">desmond1121</a>  </li>
-<li>状态 :  完成 </li>
-</ul>
-</blockquote>
-<p>从这篇博文开始我打算开启关于Gradle相关知识的一些列博文。现在想想，如果我刚开始接触Gradle的时候知道这些知识的话那该多好啊。 </p>
-<p>今天我们来聊聊Gradle的<strong>任务</strong>，尤其是任务的配置和执行部分。因为这块知识对很多读者来说还不是很清楚，所以通过一个真实的例子来说明下就再好不过了。大体上(抱歉有点超前)我们是想要弄清楚下面这三个例子到底有啥区别：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> myTask &#123;</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> myTask &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">"Hello, World!"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我的目的是创建
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gradle/">Gradle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/20/gradle-tips-1/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -1044,8 +510,8 @@ btnRed.setLayoutParams(layoutParams);
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

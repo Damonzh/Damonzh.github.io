@@ -140,6 +140,73 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-event-bus-study-register" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/18/event-bus-study-register/" class="article-date">
+  	<time datetime="2015-12-18T06:30:01.000Z" itemprop="datePublished">2015-12-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/18/event-bus-study-register/">学习EventBus之订阅</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>相信做Android开发的很少有没听说过<a href="https://github.com/greenrobot/EventBus">EventBus</a>的，如果真没听过那只能说明你Out了。<a href="https://github.com/greenrobot/EventBus">EventBus</a>是针对Android平台优化了的发布/订阅事件总线，它的目的是简化Android组件以及线程间的通信，从而使代码更加简洁。</p>
+<h4 id="u5B98_u65B9_u7ED9_u7684_u6D41_u7A0B_u56FE"><a href="#u5B98_u65B9_u7ED9_u7684_u6D41_u7A0B_u56FE" class="headerlink" title="官方给的流程图"></a>官方给的流程图</h4><p><img src="http://damonzh.github.io/2015/12/18/event-bus-study-register/EventBus-Publish-Subscribe.png" alt=""></p>
+<h4 id="u7B80_u5355_u4F7F_u7528"><a href="#u7B80_u5355_u4F7F_u7528" class="headerlink" title="简单使用"></a>简单使用</h4><ul>
+<li>定义事件类型<br><code>public class MessageEvent{}</code></li>
+<li>订阅者订阅事件<br><code>eventBus.register(this)</code></li>
+<li>发送事件<br><code>eventBus.post(messageEvent)</code></li>
+</ul>
+<p>通过以上三步，就完成一次完整的EventBus使用流程。</p>
+<p>其实类似这种发布/订阅的机制在生活中用的也挺多的。比如我晚上定个8点的闹钟，就相当于订阅了一个事件，这个事件就是’8点钟的闹钟’。当第二天8点闹钟响的时候，就相当于发送了事件。我就会收到这个事件，然后执行相应的动作，比如起床。</p>
+<p>那么，既然是订阅/发布。肯定就会有订阅，有发布了。这篇文章先根据源码来研究下订阅事件的流程和原理。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EventBus/">EventBus</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/18/event-bus-study-register/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-wxpay-problems" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
