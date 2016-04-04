@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>DamonZhang</title>
+  <title>使用Transition FrameWork实现有意义的转场动画(译) | DamonZhang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: 使用Transition FrameWork实现有意义的转场动画(译)date: 2016-4-4 16:32:45  
-tags: [Android, 译文]原文  
+  <meta name="description" content="原文  
 Android Transition Framework可以实现三种效果:  
 
 不同Activity之间切换时,Activityc的内容(contentView)转场动画
-不同Activity之间切换时，如果使用了">
+不同Activity之间切换时，如果使用了Shared Element动画，也可以使用Transition FrameWork来实现不同的过渡动画效果
+同一个Activity内View变化的过渡动画(Scene)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DamonZhang">
+<meta property="og:title" content="使用Transition FrameWork实现有意义的转场动画(译)">
 <meta property="og:url" content="http://yoursite.com/2016/04/04/transition-framework/index.html">
 <meta property="og:site_name" content="DamonZhang">
-<meta property="og:description" content="title: 使用Transition FrameWork实现有意义的转场动画(译)date: 2016-4-4 16:32:45  
-tags: [Android, 译文]原文  
+<meta property="og:description" content="原文  
 Android Transition Framework可以实现三种效果:  
 
 不同Activity之间切换时,Activityc的内容(contentView)转场动画
-不同Activity之间切换时，如果使用了">
+不同Activity之间切换时，如果使用了Shared Element动画，也可以使用Transition FrameWork来实现不同的过渡动画效果
+同一个Activity内View变化的过渡动画(Scene)">
 <meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_A_to_B.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_explode.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_slide.gif">
@@ -39,15 +39,15 @@ Android Transition Framework可以实现三种效果:
 <meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_reveal_anim.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_green.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_red.gif">
-<meta property="og:updated_time" content="2016-04-04T08:44:55.000Z">
+<meta property="og:updated_time" content="2016-04-04T08:48:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DamonZhang">
-<meta name="twitter:description" content="title: 使用Transition FrameWork实现有意义的转场动画(译)date: 2016-4-4 16:32:45  
-tags: [Android, 译文]原文  
+<meta name="twitter:title" content="使用Transition FrameWork实现有意义的转场动画(译)">
+<meta name="twitter:description" content="原文  
 Android Transition Framework可以实现三种效果:  
 
 不同Activity之间切换时,Activityc的内容(contentView)转场动画
-不同Activity之间切换时，如果使用了">
+不同Activity之间切换时，如果使用了Shared Element动画，也可以使用Transition FrameWork来实现不同的过渡动画效果
+同一个Activity内View变化的过渡动画(Scene)">
   
   
     <link rel="icon" href="/img/avatar.png">
@@ -124,7 +124,7 @@ Android Transition Framework可以实现三种效果:
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/AnimatedVectorDrawable/" style="font-size: 10px;">AnimatedVectorDrawable</a> <a href="/tags/EventBus/" style="font-size: 13.33px;">EventBus</a> <a href="/tags/Gradle/" style="font-size: 16.67px;">Gradle</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Toolbar/" style="font-size: 13.33px;">Toolbar</a> <a href="/tags/VectorDrawable/" style="font-size: 10px;">VectorDrawable</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a> <a href="/tags/源码/" style="font-size: 13.33px;">源码</a> <a href="/tags/译文/" style="font-size: 16.67px;">译文</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/AnimatedVectorDrawable/" style="font-size: 10px;">AnimatedVectorDrawable</a> <a href="/tags/EventBus/" style="font-size: 12.5px;">EventBus</a> <a href="/tags/Gradle/" style="font-size: 15px;">Gradle</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Toolbar/" style="font-size: 12.5px;">Toolbar</a> <a href="/tags/VectorDrawable/" style="font-size: 10px;">VectorDrawable</a> <a href="/tags/微信支付/" style="font-size: 10px;">微信支付</a> <a href="/tags/源码/" style="font-size: 12.5px;">源码</a> <a href="/tags/译文/" style="font-size: 17.5px;">译文</a>
 					</div>
 				</section>
 				
@@ -176,7 +176,7 @@ Android Transition Framework可以实现三种效果:
   
     <div class="article-meta">
       <a href="/2016/04/04/transition-framework/" class="article-date">
-  	<time datetime="2016-04-04T08:44:55.000Z" itemprop="datePublished">2016-04-04</time>
+  	<time datetime="2016-04-04T08:17:59.000Z" itemprop="datePublished">2016-04-04</time>
 </a>
     </div>
   
@@ -185,10 +185,31 @@ Android Transition Framework可以实现三种效果:
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用Transition FrameWork实现有意义的转场动画(译)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: 使用Transition FrameWork实现有意义的转场动画(译)<br>date: 2016-4-4 16:32:45  </p>
-<h2 id="tags_3A__5BAndroid_2C__u8BD1_u6587_5D"><a href="#tags_3A__5BAndroid_2C__u8BD1_u6587_5D" class="headerlink" title="tags: [Android, 译文]"></a>tags: [Android, 译文]</h2><p><a href="https://github.com/lgvalle/Material-Animations/blob/master/README.md" target="_blank" rel="external">原文</a>  </p>
+        <p><a href="https://github.com/lgvalle/Material-Animations/blob/master/README.md" target="_blank" rel="external">原文</a>  </p>
 <p>Android Transition Framework可以实现三种效果:  </p>
 <ol>
 <li>不同Activity之间切换时,Activityc的内容(contentView)转场动画</li>
@@ -467,7 +488,7 @@ btnRed.setLayoutParams(layoutParams);
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="transition-framework" data-title="" data-url="http://yoursite.com/2016/04/04/transition-framework/"></div>
+	<div class="ds-thread" data-thread-key="transition-framework" data-title="使用Transition FrameWork实现有意义的转场动画(译)" data-url="http://yoursite.com/2016/04/04/transition-framework/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
